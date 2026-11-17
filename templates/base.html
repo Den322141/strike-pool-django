@@ -1,0 +1,39 @@
+{% load static club_icons %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Страйк & Пул — боулинг, русский бильярд, пул и снукер. Игровые пространства, тарифы и отдых в клубе.">
+  <title>{% block title %}Страйк & Пул — боулинг и бильярд{% endblock %}</title>
+  <link rel="icon" href="{% static 'images/favicon.svg' %}" type="image/svg+xml">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Перейти к содержимому</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="{% url 'home' %}" class="brand-logo">{% icon 'bowling' %}<span>Страйк & Пул</span></a>
+      <nav class="main-nav" aria-label="Основная навигация">
+        <a href="{% url 'home' %}" aria-current="page">Клуб</a>
+        <a href="{% url 'home' %}#hall">Бронирование</a>
+        <a href="{% url 'home' %}#formats">Бар &amp; Кухня</a>
+        <a href="{% url 'home' %}#tariffs">Показатели</a>
+      </nav>
+      <nav class="user-nav" aria-label="Личный кабинет">
+        <a href="{% url 'home' %}#club-pass" class="btn btn-secondary btn-sm">Войти</a>
+        <a href="{% url 'home' %}#club-pass" class="btn btn-primary btn-sm">Регистрация</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main-content" class="container page-content" tabindex="-1">
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div><strong>«Страйк & Пул»</strong> · Боулинг и бильярдный клуб премиум-класса<br>г. Москва, ул. Спортивная, д. 12 · Ежедневно с 10:00 до 02:00</div>
+      <div>Онлайн-бронирование дорожек и столов · +7 (495) 123-45-67</div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load static club_icons %}
+{% block content %}
+  <section class="card hero" aria-labelledby="hero-title">
+    <div class="hero-inner">
+      <p class="hero-eyebrow">{% icon 'bowling' %} Пространство спорта и отдыха нового уровня</p>
+      <h1 id="hero-title">Страйк &amp; Пул.</h1>
+      <p class="hero-description">6 профессиональных дорожек боулинга Brunswick, 8 столов русской пирамиды и пула, бар с авторской кухней и мгновенный расчет тарифа онлайн.</p>
+      <div class="hero-actions">
+        <a href="{% url 'home' %}#hall" class="btn btn-primary">{% icon 'calendar' %} Забронировать дорожку или стол</a>
+        <a href="{% url 'home' %}#formats" class="btn btn-secondary">{% icon 'cocktail' %} Меню бара и кухни</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="formats" class="game-section" aria-labelledby="formats-title">
+    <div class="section-heading"><h2 id="formats-title">Игровые форматы</h2><span>4 направления</span></div>
+    <div class="grid-4 game-grid">
+      {% for game in games %}
+        <article class="card game-card">
+          <div class="game-photo">
+            <img src="{% static game.photo %}" alt="{{ game.name }} — игровая зона клуба" width="640" height="426" loading="lazy">
+            <span class="photo-label">{{ game.label }}</span>
+          </div>
+          <h3>{{ game.name }}</h3>
+          <p class="game-description">{{ game.description }}</p>
+          <div class="game-capacity">{% icon 'users' %}<span>До <strong>{{ game.players }}</strong> чел. на одну зону</span>
+            {% if game.slug == 'bowling' %}<span class="capacity-note">&gt;6 гостей — автоподбор 2 дорожек</span>{% endif %}
+          </div>
+          <a href="{% url 'home' %}#hall" class="btn btn-secondary btn-block btn-sm">Выбрать {{ game.name }} →</a>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section id="hall" class="hall-blueprint" aria-labelledby="hall-title">
+    <div class="blueprint-header">
+      <div>
+        <h2 id="hall-title">{% icon 'pool' %} Интерактивная схема залов клуба</h2>
+        <p class="section-description">Реалистичное расположение игровых дорожек и столов. Нажмите на зону для быстрого бронирования.</p>
+      </div>
+      <ul class="blueprint-legend" aria-label="Условные обозначения">
+        <li class="legend-chip"><span class="dot-indicator dot-free"></span>Свободно</li>
+        <li class="legend-chip"><span class="dot-indicator dot-busy"></span>Занято</li>
+        <li class="legend-chip"><span class="dot-indicator dot-maint"></span>Тех. обслуживание</li>
+      </ul>
+    </div>
+    <div class="hall-heading">
+      <h3>{% icon 'bowling' %} Боулинг-цех Brunswick (Дорожки 1–6)</h3>
+      <p>Покрытие: светлый клен · Пинспоттеры GS-X</p>
+    </div>
+    <div class="lanes-blueprint-grid">
+      {% for lane in lanes %}
+        <a class="lane-unit" href="{% url 'home' %}#club-pass" aria-label="Выбрать дорожку №{{ lane.number }}">
+          <div class="pin-deck" aria-hidden="true"><div class="pins-triangle">
+            <div class="pin-row"><span class="pin-dot"></span></div>
+            <div class="pin-row"><span class="pin-dot"></span><span class="pin-dot"></span></div>
+            <div class="pin-row"><span class="pin-dot"></span><span class="pin-dot"></span><span class="pin-dot"></span></div>
+            <div class="pin-row"><span class="pin-dot"></span><span class="pin-dot"></span><span class="pin-dot"></span><span class="pin-dot"></span></div>
+          </div></div>
+          <div class="lane-wood-board" aria-hidden="true"><span class="foul-line"></span><span class="lane-brand">BRUNSWICK</span></div>
+          <div class="lane-number-badge">№{{ lane.number }}</div>
+          <div class="lane-title-sub">Дорожка №{{ lane.number }}{% if lane.vip %} VIP{% endif %}</div>
+          {% if lane.vip %}<span class="badge badge-vip zone-vip">VIP</span>{% endif %}
+          <div class="zone-status-text">● Свободно</div>
+        </a>
+      {% endfor %}
+    </div>
+    <div class="hall-heading">
+      <h3>{% icon 'billiards' %} Бильярдный лаунж (Русская пирамида, Пул, Снукер)</h3>
+      <p>Сланец Ардезия · Сукно Iwan Simonis 760</p>
+    </div>
+    <div class="tables-blueprint-grid">
+      {% for table in tables %}
+        <a class="table-unit" href="{% url 'home' %}#club-pass" aria-label="Выбрать {{ table.title }}">
+          <div class="felt-table {{ table.kind }}" aria-hidden="true">
+            <span class="pocket pocket-tl"></span><span class="pocket pocket-tc"></span><span class="pocket pocket-tr"></span>
+            <span class="pocket pocket-bl"></span><span class="pocket pocket-bc"></span><span class="pocket pocket-br"></span>
+            <div class="balls-cluster"><span class="b-ball"></span><span class="b-ball{% if table.kind == 'pool' %} red{% endif %}"></span><span class="b-ball{% if table.kind == 'pool' %} yellow{% endif %}"></span></div>
+          </div>
+          <div class="table-unit-info">
+            <div><div class="table-unit-name">#{{ table.number }} · {{ table.title|truncatechars:23 }}</div><p class="table-kind">{{ table.game }}</p></div>
+            <div class="table-status">{% if table.vip %}<span class="badge badge-vip zone-vip">VIP</span>{% endif %}<div class="zone-status-text">Свободен</div></div>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </section>
+
+  <div class="grid-2 benefits-grid">
+    <section id="tariffs" class="card tariff-card" aria-labelledby="tariffs-title">
+      <h2 id="tariffs-title" class="card-title">{% icon 'clock' %} Тарифная сетка (руб / час)</h2>
+      <div class="table-responsive">
+        <table class="table tariff-table">
+          <caption class="visually-hidden">Стоимость часа аренды в зависимости от игры, дня недели и времени</caption>
+          <thead><tr><th scope="col">Игра</th><th scope="col">Период</th><th scope="col">День (10:00–18:00)</th><th scope="col">Вечер (18:00–02:00)</th></tr></thead>
+          <tbody>
+            {% for game, period, day, night in tariffs %}
+              <tr><th scope="row">{{ game }}</th><td>{{ period }}</td><td>{{ day }} ₽</td><td>{{ night }} ₽</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <p class="alert alert-info tariff-note">ℹ️ <strong>Особый автопересчёт на стыке тарифов:</strong> если бронь пересекает 18:00, сервер автоматически делит время на дневной и вечерний периоды, вычисляя точную сумму без округлений.</p>
+    </section>
+    <section id="club-pass" class="card club-card" aria-labelledby="pass-title">
+      <div class="pass-heading"><h2 id="pass-title">{% icon 'card' %} Клубная карта</h2><span class="badge badge-vip">СКИДКА ДО 20%</span></div>
+      <p class="pass-description">Привилегии для постоянных гостей. Номер карты автоматически рассчитывает персональную скидку на аренду дорожек и бар.</p>
+      <div class="club-pass"><p class="pass-label">STRIKE &amp; POOL CLUB PASS</p><p class="pass-number">CLUB •••• 1001</p><p class="pass-caption">Скидка от 5% до 20% при каждом визите</p></div>
+      <a href="{% url 'home' %}#main-content" class="btn btn-primary btn-block">Создать профиль и получить скидку</a>
+    </section>
+  </div>
+
+  <section class="card reviews" aria-labelledby="reviews-title">
+    <div class="section-heading reviews-heading"><h2 id="reviews-title">Отзывы гостей</h2><a href="{% url 'home' %}#hall">Все бронирования →</a></div>
+    <div class="grid-3">
+      {% for review in reviews %}
+        <article class="review-card">
+          <div class="review-heading"><h3>{{ review.name }}</h3><span class="review-stars" aria-label="5 из 5">★★★★★</span></div>
+          <p>{{ review.text }}</p><p class="review-date">{{ review.date }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+{% endblock %}
