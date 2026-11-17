@@ -7,8 +7,8 @@
       <h1 id="hero-title">Страйк &amp; Пул.</h1>
       <p class="hero-description">6 профессиональных дорожек боулинга Brunswick, 8 столов русской пирамиды и пула, бар с авторской кухней и мгновенный расчет тарифа онлайн.</p>
       <div class="hero-actions">
-        <a href="{% url 'home' %}#hall" class="btn btn-primary">{% icon 'calendar' %} Забронировать дорожку или стол</a>
-        <a href="{% url 'home' %}#formats" class="btn btn-secondary">{% icon 'cocktail' %} Меню бара и кухни</a>
+        <a href="{% url 'club:booking_create' %}" class="btn btn-primary">{% icon 'calendar' %} Забронировать дорожку или стол</a>
+        <a href="{% url 'club:menu_catalog' %}" class="btn btn-secondary">{% icon 'cocktail' %} Меню бара и кухни</a>
       </div>
     </div>
   </section>
@@ -27,7 +27,7 @@
           <div class="game-capacity">{% icon 'users' %}<span>До <strong>{{ game.players }}</strong> чел. на одну зону</span>
             {% if game.slug == 'bowling' %}<span class="capacity-note">&gt;6 гостей — автоподбор 2 дорожек</span>{% endif %}
           </div>
-          <a href="{% url 'home' %}#hall" class="btn btn-secondary btn-block btn-sm">Выбрать {{ game.name }} →</a>
+          <a href="{% url 'club:booking_create' %}" class="btn btn-secondary btn-block btn-sm">Выбрать {{ game.name }} →</a>
         </article>
       {% endfor %}
     </div>
@@ -51,7 +51,7 @@
     </div>
     <div class="lanes-blueprint-grid">
       {% for lane in lanes %}
-        <a class="lane-unit" href="{% url 'home' %}#club-pass" aria-label="Выбрать дорожку №{{ lane.number }}">
+        <a class="lane-unit" href="{% url 'club:booking_create' %}" aria-label="Выбрать дорожку №{{ lane.number }}">
           <div class="pin-deck" aria-hidden="true"><div class="pins-triangle">
             <div class="pin-row"><span class="pin-dot"></span></div>
             <div class="pin-row"><span class="pin-dot"></span><span class="pin-dot"></span></div>
@@ -72,7 +72,7 @@
     </div>
     <div class="tables-blueprint-grid">
       {% for table in tables %}
-        <a class="table-unit" href="{% url 'home' %}#club-pass" aria-label="Выбрать {{ table.title }}">
+        <a class="table-unit" href="{% url 'club:booking_create' %}" aria-label="Выбрать {{ table.title }}">
           <div class="felt-table {{ table.kind }}" aria-hidden="true">
             <span class="pocket pocket-tl"></span><span class="pocket pocket-tc"></span><span class="pocket pocket-tr"></span>
             <span class="pocket pocket-bl"></span><span class="pocket pocket-bc"></span><span class="pocket pocket-br"></span>
@@ -107,12 +107,12 @@
       <div class="pass-heading"><h2 id="pass-title">{% icon 'card' %} Клубная карта</h2><span class="badge badge-vip">СКИДКА ДО 20%</span></div>
       <p class="pass-description">Привилегии для постоянных гостей. Номер карты автоматически рассчитывает персональную скидку на аренду дорожек и бар.</p>
       <div class="club-pass"><p class="pass-label">STRIKE &amp; POOL CLUB PASS</p><p class="pass-number">CLUB •••• 1001</p><p class="pass-caption">Скидка от 5% до 20% при каждом визите</p></div>
-      <a href="{% url 'home' %}#main-content" class="btn btn-primary btn-block">Создать профиль и получить скидку</a>
+      <a href="{% url 'club:register' %}" class="btn btn-primary btn-block">Создать профиль и получить скидку</a>
     </section>
   </div>
 
   <section class="card reviews" aria-labelledby="reviews-title">
-    <div class="section-heading reviews-heading"><h2 id="reviews-title">Отзывы гостей</h2><a href="{% url 'home' %}#hall">Все бронирования →</a></div>
+    <div class="section-heading reviews-heading"><h2 id="reviews-title">Отзывы гостей</h2><a href="{% url 'club:booking_list' %}">Все бронирования →</a></div>
     <div class="grid-3">
       {% for review in reviews %}
         <article class="review-card">

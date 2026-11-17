@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}{{ title }} — Страйк &amp; Пул{% endblock %}
+{% block content %}
+  <section class="card placeholder" aria-labelledby="section-title">
+    <h1 id="section-title">{{ title }}</h1>
+    <p>Раздел пока недоступен. Вернитесь на главную, чтобы посмотреть игровые форматы и тарифы клуба.</p>
+    <a class="btn btn-primary" href="{% url 'club:home' %}">На главную</a>
+  </section>
+{% endblock %}

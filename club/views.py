@@ -11,3 +11,7 @@ def home(request):
         "tariffs": TARIFFS,
         "reviews": REVIEWS,
     })
+
+
+def section(request, title):
+    return render(request, "club/section.html", {"title": title})
