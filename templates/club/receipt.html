@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Талон {{ booking.number }} · Страйк &amp; Пул{% endblock %}
+{% block content %}
+<section class="card narrow receipt"><p>Страйк &amp; Пул · Талон посетителя</p><h1>{{ booking.number }}</h1>{% include 'club/booking_summary.html' %}<p>{{ booking.get_status_display }}</p></section><a class="back" href="{% url 'club:booking_detail' booking.pk %}">← Детали бронирования</a>
+{% endblock %}

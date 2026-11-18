@@ -18,4 +18,7 @@ urlpatterns = [
     path("logout/", LogoutView.as_view(next_page="club:home"), name="logout"),
     path("register/", TemplateView.as_view(template_name="club/register.html"), name="register"),
     path("bookings/", views.booking_list, name="booking_list"),
+    path("bookings/<int:pk>/", views.booking_record, {"template_name": "club/booking_detail.html"}, name="booking_detail"),
+    path("bookings/<int:pk>/edit/", views.booking_record, {"template_name": "club/booking_edit.html"}, name="booking_edit"),
+    path("bookings/<int:pk>/receipt/", views.booking_record, {"template_name": "club/receipt.html"}, name="receipt"),
 ]

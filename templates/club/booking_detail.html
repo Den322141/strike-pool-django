@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Бронь {{ booking.number }} · Страйк &amp; Пул{% endblock %}
+{% block content %}
+<a class="back" href="{% url 'club:booking_list' %}">← Мои бронирования</a><section class="card narrow"><p class="muted">{{ booking.get_status_display }}</p><h1>Бронь {{ booking.number }}</h1>{% include 'club/booking_summary.html' %}<div class="chips"><a class="btn btn-secondary" href="{% url 'club:receipt' booking.pk %}">Открыть талон</a><a class="btn btn-secondary" href="{% url 'club:booking_edit' booking.pk %}">Параметры брони</a></div></section>
+{% endblock %}

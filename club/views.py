@@ -1,5 +1,7 @@
 import re
+from decimal import Decimal, InvalidOperation
 
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.db.models import Max, Q
 from django.shortcuts import get_object_or_404, render
@@ -23,26 +25,41 @@ def home(request):
 
 
 def menu(request):
-    items = MenuItem.objects.select_related("category").order_by("category_id", "name", "pk")
-    category = request.GET.get("category", "")
-    if category:
-        items = items.filter(category__name=category)
+    items = MenuItem.objects.select_related("category").order_by("category__name", "name", "pk")
     return render(request, "club/menu.html", {
         "page": Paginator(items, 20).get_page(request.GET.get("page")),
-        "categories": Category.objects.all(), "category": category,
+        "categories": Category.objects.all(), "total": items.count(),
     })
 
 
 def search(request):
     query = request.GET.get("q", "").strip()[:100]
     items = MenuItem.objects.select_related("category")
+    category = request.GET.get("category", "")
+    if category:
+        items = items.filter(category__name=category)
     if query:
         term = re.escape(query)
         items = items.filter(Q(name__iregex=term) | Q(description__iregex=term) | Q(category__name__iregex=term))
-    else:
-        items = items.none()
+    if request.GET.get("available") == "1":
+        items = items.filter(active=True)
+    for key, lookup in [("min_price", "price__gte"), ("max_price", "price__lte")]:
+        raw = request.GET.get(key, "")
+        if raw:
+            try:
+                amount = Decimal(raw)
+                if not amount.is_finite() or not 0 <= amount <= 99999999:
+                    raise ValueError
+                items = items.filter(**{lookup: amount})
+            except (InvalidOperation, ValueError):
+                items = items.none()
+    order = request.GET.get("order")
+    if order not in ("price", "-price"):
+        order = "category__name"
+    items = items.order_by(order, "name", "pk")
     return render(request, "club/search.html", {
-        "page": Paginator(items.order_by("name", "pk"), 20).get_page(request.GET.get("page")), "q": query,
+        "page": Paginator(items, 20).get_page(request.GET.get("page")),
+        "q": query, "submitted": bool(request.GET),
     })
 
 
@@ -80,3 +97,9 @@ def dashboard(request):
         "games": GameType.objects.count(), "zones": Zone.objects.filter(active=True).count(),
         "dishes": MenuItem.objects.filter(active=True).count(),
     })
+
+@login_required(login_url="club:login")
+def booking_record(request, pk, template_name):
+    records = Booking.objects.filter(visitor=request.user).prefetch_related("zones__game_type")
+    booking = get_object_or_404(records, pk=pk)
+    return render(request, template_name, {"booking": booking})

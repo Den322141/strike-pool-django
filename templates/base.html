@@ -8,20 +8,23 @@
   <title>{% block title %}Страйк & Пул — боулинг и бильярд{% endblock %}</title>
   <link rel="icon" href="{% static 'images/favicon.svg' %}" type="image/svg+xml">
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/pages.css' %}">
+  <script src="{% static 'js/menu.js' %}" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Перейти к содержимому</a>
   <header class="site-header">
     <div class="container header-inner">
       <a href="{% url 'club:home' %}" class="brand-logo">{% icon 'bowling' %}<span>Страйк & Пул</span></a>
-      <nav class="main-nav" aria-label="Основная навигация">
+      <button type="button" class="menu-toggle" aria-label="Меню" aria-controls="main-nav user-nav" aria-expanded="false"><span aria-hidden="true">☰</span></button>
+      <nav id="main-nav" class="main-nav" aria-label="Основная навигация">
         <a href="{% url 'club:home' %}" {% if request.resolver_match.url_name == 'home' %}aria-current="page"{% endif %}>Клуб</a>
         <a href="{% url 'club:booking_create' %}">Бронирование</a>
         <a href="{% url 'club:menu_catalog' %}">Бар &amp; Кухня</a>
         <a href="{% url 'club:dashboard' %}">Показатели</a>
         <a href="{% url 'club:about' %}">О клубе</a>
       </nav>
-      <nav class="user-nav" aria-label="Личный кабинет">
+      <nav id="user-nav" class="user-nav" aria-label="Личный кабинет">
         <a href="{% url 'club:profile' %}" class="btn btn-secondary btn-sm">Профиль</a>
         {% if user.is_authenticated %}<form method="post" action="{% url 'club:logout' %}">{% csrf_token %}<button class="btn btn-secondary btn-sm">Выйти</button></form>
         {% else %}<a href="{% url 'club:login' %}" class="btn btn-secondary btn-sm">Войти</a><a href="{% url 'club:register' %}" class="btn btn-primary btn-sm">Регистрация</a>{% endif %}

@@ -1,0 +1,2 @@
+<p>{{ booking.starts_at|date:"d.m.Y H:i" }} — {{ booking.ends_at|date:"d.m.Y H:i" }}</p><p>Гостей: {{ booking.guests }}</p>
+<h2>Игровые зоны</h2>{% for zone in booking.zones.all %}<p>{{ zone.name }} · {{ zone.game_type.name }}</p>{% empty %}<p>Зоны ещё не назначены.</p>{% endfor %}

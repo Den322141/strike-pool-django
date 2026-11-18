@@ -6,7 +6,7 @@
   <p class="muted">{{ item.category.name }} · {{ item.portion }}</p>
   <h3><a href="{% url 'club:dish' item.pk %}">{{ item.name }}</a></h3>
   <p>{{ item.description|truncatechars:95 }}</p>
-  <div class="food-price"><strong>{{ item.price|floatformat:2 }} ₽</strong>{% if not item.active %}<span>Нет в наличии</span>{% endif %}</div>
+  <div class="food-price"><strong>{{ item.price|floatformat:2 }} ₽</strong><span class="stock-label">{% if item.active %}В наличии{% else %}Нет в наличии{% endif %}</span></div>
   <a class="btn btn-secondary" href="{% url 'club:dish' item.pk %}">Подробнее</a>
 </article>
 {% empty %}<p class="card">Блюд не найдено.</p>{% endfor %}
