@@ -1,0 +1,1438 @@
+[
+  {
+    "model": "club.gametype",
+    "pk": 1,
+    "fields": {
+      "name": "Боулинг",
+      "is_bowling": true,
+      "slug": "bowling",
+      "description": "Современные дорожки с профессиональным покрытием Brunswick и автоматической системой подсчёта очков.",
+      "label": "6 дорожек Brunswick",
+      "image": "images/bowling_lane.webp"
+    }
+  },
+  {
+    "model": "club.gametype",
+    "pk": 2,
+    "fields": {
+      "name": "Русский бильярд (Пирамида)",
+      "is_bowling": false,
+      "slug": "russian",
+      "description": "Профессиональные 12-футовые столы из натурального сланца Ардезия и отборного сукна Iwan Simonis.",
+      "label": "Сукно Iwan Simonis",
+      "image": "images/billiard_russian.webp"
+    }
+  },
+  {
+    "model": "club.gametype",
+    "pk": 3,
+    "fields": {
+      "name": "Американский пул",
+      "is_bowling": false,
+      "slug": "pool",
+      "description": "Динамичная и увлекательная игра на 9-футовых столах Dynamic II с качественными шарами Aramith.",
+      "label": "Сукно Iwan Simonis",
+      "image": "images/billiard_pool.webp"
+    }
+  },
+  {
+    "model": "club.gametype",
+    "pk": 4,
+    "fields": {
+      "name": "Снукер",
+      "is_bowling": false,
+      "slug": "snooker",
+      "description": "Классический английский снукер на эталонном полноразмерном столе с подогревом плиты.",
+      "label": "Сукно Iwan Simonis",
+      "image": "images/billiard_pool.webp"
+    }
+  },
+  {
+    "model": "club.zone",
+    "pk": 1,
+    "fields": {
+      "number": 1,
+      "name": "Дорожка №1",
+      "capacity": 6,
+      "vip": false,
+      "active": true,
+      "game_type": 1
+    }
+  },
+  {
+    "model": "club.zone",
+    "pk": 2,
+    "fields": {
+      "number": 2,
+      "name": "Дорожка №2",
+      "capacity": 6,
+      "vip": false,
+      "active": true,
+      "game_type": 1
+    }
+  },
+  {
+    "model": "club.zone",
+    "pk": 3,
+    "fields": {
+      "number": 3,
+      "name": "Дорожка №3",
+      "capacity": 6,
+      "vip": false,
+      "active": true,
+      "game_type": 1
+    }
+  },
+  {
+    "model": "club.zone",
+    "pk": 4,
+    "fields": {
+      "number": 4,
+      "name": "Дорожка №4",
+      "capacity": 6,
+      "vip": false,
+      "active": true,
+      "game_type": 1
+    }
+  },
+  {
+    "model": "club.zone",
+    "pk": 5,
+    "fields": {
+      "number": 5,
+      "name": "Дорожка №5",
+      "capacity": 6,
+      "vip": true,
+      "active": true,
+      "game_type": 1
+    }
+  },
+  {
+    "model": "club.zone",
+    "pk": 6,
+    "fields": {
+      "number": 6,
+      "name": "Дорожка №6",
+      "capacity": 6,
+      "vip": true,
+      "active": true,
+      "game_type": 1
+    }
+  },
+  {
+    "model": "club.zone",
+    "pk": 7,
+    "fields": {
+      "number": 1,
+      "name": "Русский стол №1",
+      "capacity": 4,
+      "vip": false,
+      "active": true,
+      "game_type": 2
+    }
+  },
+  {
+    "model": "club.zone",
+    "pk": 8,
+    "fields": {
+      "number": 2,
+      "name": "Русский стол №2",
+      "capacity": 4,
+      "vip": false,
+      "active": true,
+      "game_type": 2
+    }
+  },
+  {
+    "model": "club.zone",
+    "pk": 9,
+    "fields": {
+      "number": 3,
+      "name": "Русский стол №3",
+      "capacity": 4,
+      "vip": false,
+      "active": true,
+      "game_type": 2
+    }
+  },
+  {
+    "model": "club.zone",
+    "pk": 10,
+    "fields": {
+      "number": 4,
+      "name": "Русский стол №4",
+      "capacity": 4,
+      "vip": true,
+      "active": true,
+      "game_type": 2
+    }
+  },
+  {
+    "model": "club.zone",
+    "pk": 11,
+    "fields": {
+      "number": 1,
+      "name": "Пул стол №1 (9 футов)",
+      "capacity": 4,
+      "vip": false,
+      "active": true,
+      "game_type": 3
+    }
+  },
+  {
+    "model": "club.zone",
+    "pk": 12,
+    "fields": {
+      "number": 2,
+      "name": "Пул стол №2 (9 футов)",
+      "capacity": 4,
+      "vip": false,
+      "active": true,
+      "game_type": 3
+    }
+  },
+  {
+    "model": "club.zone",
+    "pk": 13,
+    "fields": {
+      "number": 3,
+      "name": "Пул стол №3 (9 футов)",
+      "capacity": 4,
+      "vip": false,
+      "active": true,
+      "game_type": 3
+    }
+  },
+  {
+    "model": "club.zone",
+    "pk": 14,
+    "fields": {
+      "number": 1,
+      "name": "Снукерный стол №1",
+      "capacity": 4,
+      "vip": true,
+      "active": true,
+      "game_type": 4
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 1,
+    "fields": {
+      "game_type": 1,
+      "weekday": 0,
+      "start": "00:00",
+      "end": "02:00",
+      "rate": "1650.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 2,
+    "fields": {
+      "game_type": 1,
+      "weekday": 0,
+      "start": "10:00",
+      "end": "18:00",
+      "rate": "750.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 3,
+    "fields": {
+      "game_type": 1,
+      "weekday": 0,
+      "start": "18:00",
+      "end": "23:59:59",
+      "rate": "1200.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 4,
+    "fields": {
+      "game_type": 1,
+      "weekday": 1,
+      "start": "00:00",
+      "end": "02:00",
+      "rate": "1200.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 5,
+    "fields": {
+      "game_type": 1,
+      "weekday": 1,
+      "start": "10:00",
+      "end": "18:00",
+      "rate": "750.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 6,
+    "fields": {
+      "game_type": 1,
+      "weekday": 1,
+      "start": "18:00",
+      "end": "23:59:59",
+      "rate": "1200.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 7,
+    "fields": {
+      "game_type": 1,
+      "weekday": 2,
+      "start": "00:00",
+      "end": "02:00",
+      "rate": "1200.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 8,
+    "fields": {
+      "game_type": 1,
+      "weekday": 2,
+      "start": "10:00",
+      "end": "18:00",
+      "rate": "750.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 9,
+    "fields": {
+      "game_type": 1,
+      "weekday": 2,
+      "start": "18:00",
+      "end": "23:59:59",
+      "rate": "1200.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 10,
+    "fields": {
+      "game_type": 1,
+      "weekday": 3,
+      "start": "00:00",
+      "end": "02:00",
+      "rate": "1200.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 11,
+    "fields": {
+      "game_type": 1,
+      "weekday": 3,
+      "start": "10:00",
+      "end": "18:00",
+      "rate": "750.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 12,
+    "fields": {
+      "game_type": 1,
+      "weekday": 3,
+      "start": "18:00",
+      "end": "23:59:59",
+      "rate": "1200.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 13,
+    "fields": {
+      "game_type": 1,
+      "weekday": 4,
+      "start": "00:00",
+      "end": "02:00",
+      "rate": "1200.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 14,
+    "fields": {
+      "game_type": 1,
+      "weekday": 4,
+      "start": "10:00",
+      "end": "18:00",
+      "rate": "1100.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 15,
+    "fields": {
+      "game_type": 1,
+      "weekday": 4,
+      "start": "18:00",
+      "end": "23:59:59",
+      "rate": "1650.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 16,
+    "fields": {
+      "game_type": 1,
+      "weekday": 5,
+      "start": "00:00",
+      "end": "02:00",
+      "rate": "1650.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 17,
+    "fields": {
+      "game_type": 1,
+      "weekday": 5,
+      "start": "10:00",
+      "end": "18:00",
+      "rate": "1100.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 18,
+    "fields": {
+      "game_type": 1,
+      "weekday": 5,
+      "start": "18:00",
+      "end": "23:59:59",
+      "rate": "1650.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 19,
+    "fields": {
+      "game_type": 1,
+      "weekday": 6,
+      "start": "00:00",
+      "end": "02:00",
+      "rate": "1650.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 20,
+    "fields": {
+      "game_type": 1,
+      "weekday": 6,
+      "start": "10:00",
+      "end": "18:00",
+      "rate": "1100.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 21,
+    "fields": {
+      "game_type": 1,
+      "weekday": 6,
+      "start": "18:00",
+      "end": "23:59:59",
+      "rate": "1650.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 22,
+    "fields": {
+      "game_type": 2,
+      "weekday": 0,
+      "start": "00:00",
+      "end": "02:00",
+      "rate": "1300.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 23,
+    "fields": {
+      "game_type": 2,
+      "weekday": 0,
+      "start": "10:00",
+      "end": "18:00",
+      "rate": "600.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 24,
+    "fields": {
+      "game_type": 2,
+      "weekday": 0,
+      "start": "18:00",
+      "end": "23:59:59",
+      "rate": "950.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 25,
+    "fields": {
+      "game_type": 2,
+      "weekday": 1,
+      "start": "00:00",
+      "end": "02:00",
+      "rate": "950.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 26,
+    "fields": {
+      "game_type": 2,
+      "weekday": 1,
+      "start": "10:00",
+      "end": "18:00",
+      "rate": "600.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 27,
+    "fields": {
+      "game_type": 2,
+      "weekday": 1,
+      "start": "18:00",
+      "end": "23:59:59",
+      "rate": "950.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 28,
+    "fields": {
+      "game_type": 2,
+      "weekday": 2,
+      "start": "00:00",
+      "end": "02:00",
+      "rate": "950.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 29,
+    "fields": {
+      "game_type": 2,
+      "weekday": 2,
+      "start": "10:00",
+      "end": "18:00",
+      "rate": "600.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 30,
+    "fields": {
+      "game_type": 2,
+      "weekday": 2,
+      "start": "18:00",
+      "end": "23:59:59",
+      "rate": "950.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 31,
+    "fields": {
+      "game_type": 2,
+      "weekday": 3,
+      "start": "00:00",
+      "end": "02:00",
+      "rate": "950.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 32,
+    "fields": {
+      "game_type": 2,
+      "weekday": 3,
+      "start": "10:00",
+      "end": "18:00",
+      "rate": "600.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 33,
+    "fields": {
+      "game_type": 2,
+      "weekday": 3,
+      "start": "18:00",
+      "end": "23:59:59",
+      "rate": "950.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 34,
+    "fields": {
+      "game_type": 2,
+      "weekday": 4,
+      "start": "00:00",
+      "end": "02:00",
+      "rate": "950.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 35,
+    "fields": {
+      "game_type": 2,
+      "weekday": 4,
+      "start": "10:00",
+      "end": "18:00",
+      "rate": "850.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 36,
+    "fields": {
+      "game_type": 2,
+      "weekday": 4,
+      "start": "18:00",
+      "end": "23:59:59",
+      "rate": "1300.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 37,
+    "fields": {
+      "game_type": 2,
+      "weekday": 5,
+      "start": "00:00",
+      "end": "02:00",
+      "rate": "1300.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 38,
+    "fields": {
+      "game_type": 2,
+      "weekday": 5,
+      "start": "10:00",
+      "end": "18:00",
+      "rate": "850.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 39,
+    "fields": {
+      "game_type": 2,
+      "weekday": 5,
+      "start": "18:00",
+      "end": "23:59:59",
+      "rate": "1300.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 40,
+    "fields": {
+      "game_type": 2,
+      "weekday": 6,
+      "start": "00:00",
+      "end": "02:00",
+      "rate": "1300.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 41,
+    "fields": {
+      "game_type": 2,
+      "weekday": 6,
+      "start": "10:00",
+      "end": "18:00",
+      "rate": "850.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 42,
+    "fields": {
+      "game_type": 2,
+      "weekday": 6,
+      "start": "18:00",
+      "end": "23:59:59",
+      "rate": "1300.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 43,
+    "fields": {
+      "game_type": 3,
+      "weekday": 0,
+      "start": "00:00",
+      "end": "02:00",
+      "rate": "1100.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 44,
+    "fields": {
+      "game_type": 3,
+      "weekday": 0,
+      "start": "10:00",
+      "end": "18:00",
+      "rate": "500.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 45,
+    "fields": {
+      "game_type": 3,
+      "weekday": 0,
+      "start": "18:00",
+      "end": "23:59:59",
+      "rate": "800.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 46,
+    "fields": {
+      "game_type": 3,
+      "weekday": 1,
+      "start": "00:00",
+      "end": "02:00",
+      "rate": "800.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 47,
+    "fields": {
+      "game_type": 3,
+      "weekday": 1,
+      "start": "10:00",
+      "end": "18:00",
+      "rate": "500.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 48,
+    "fields": {
+      "game_type": 3,
+      "weekday": 1,
+      "start": "18:00",
+      "end": "23:59:59",
+      "rate": "800.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 49,
+    "fields": {
+      "game_type": 3,
+      "weekday": 2,
+      "start": "00:00",
+      "end": "02:00",
+      "rate": "800.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 50,
+    "fields": {
+      "game_type": 3,
+      "weekday": 2,
+      "start": "10:00",
+      "end": "18:00",
+      "rate": "500.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 51,
+    "fields": {
+      "game_type": 3,
+      "weekday": 2,
+      "start": "18:00",
+      "end": "23:59:59",
+      "rate": "800.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 52,
+    "fields": {
+      "game_type": 3,
+      "weekday": 3,
+      "start": "00:00",
+      "end": "02:00",
+      "rate": "800.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 53,
+    "fields": {
+      "game_type": 3,
+      "weekday": 3,
+      "start": "10:00",
+      "end": "18:00",
+      "rate": "500.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 54,
+    "fields": {
+      "game_type": 3,
+      "weekday": 3,
+      "start": "18:00",
+      "end": "23:59:59",
+      "rate": "800.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 55,
+    "fields": {
+      "game_type": 3,
+      "weekday": 4,
+      "start": "00:00",
+      "end": "02:00",
+      "rate": "800.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 56,
+    "fields": {
+      "game_type": 3,
+      "weekday": 4,
+      "start": "10:00",
+      "end": "18:00",
+      "rate": "700.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 57,
+    "fields": {
+      "game_type": 3,
+      "weekday": 4,
+      "start": "18:00",
+      "end": "23:59:59",
+      "rate": "1100.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 58,
+    "fields": {
+      "game_type": 3,
+      "weekday": 5,
+      "start": "00:00",
+      "end": "02:00",
+      "rate": "1100.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 59,
+    "fields": {
+      "game_type": 3,
+      "weekday": 5,
+      "start": "10:00",
+      "end": "18:00",
+      "rate": "700.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 60,
+    "fields": {
+      "game_type": 3,
+      "weekday": 5,
+      "start": "18:00",
+      "end": "23:59:59",
+      "rate": "1100.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 61,
+    "fields": {
+      "game_type": 3,
+      "weekday": 6,
+      "start": "00:00",
+      "end": "02:00",
+      "rate": "1100.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 62,
+    "fields": {
+      "game_type": 3,
+      "weekday": 6,
+      "start": "10:00",
+      "end": "18:00",
+      "rate": "700.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 63,
+    "fields": {
+      "game_type": 3,
+      "weekday": 6,
+      "start": "18:00",
+      "end": "23:59:59",
+      "rate": "1100.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 64,
+    "fields": {
+      "game_type": 4,
+      "weekday": 0,
+      "start": "00:00",
+      "end": "02:00",
+      "rate": "1450.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 65,
+    "fields": {
+      "game_type": 4,
+      "weekday": 0,
+      "start": "10:00",
+      "end": "18:00",
+      "rate": "700.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 66,
+    "fields": {
+      "game_type": 4,
+      "weekday": 0,
+      "start": "18:00",
+      "end": "23:59:59",
+      "rate": "1100.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 67,
+    "fields": {
+      "game_type": 4,
+      "weekday": 1,
+      "start": "00:00",
+      "end": "02:00",
+      "rate": "1100.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 68,
+    "fields": {
+      "game_type": 4,
+      "weekday": 1,
+      "start": "10:00",
+      "end": "18:00",
+      "rate": "700.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 69,
+    "fields": {
+      "game_type": 4,
+      "weekday": 1,
+      "start": "18:00",
+      "end": "23:59:59",
+      "rate": "1100.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 70,
+    "fields": {
+      "game_type": 4,
+      "weekday": 2,
+      "start": "00:00",
+      "end": "02:00",
+      "rate": "1100.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 71,
+    "fields": {
+      "game_type": 4,
+      "weekday": 2,
+      "start": "10:00",
+      "end": "18:00",
+      "rate": "700.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 72,
+    "fields": {
+      "game_type": 4,
+      "weekday": 2,
+      "start": "18:00",
+      "end": "23:59:59",
+      "rate": "1100.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 73,
+    "fields": {
+      "game_type": 4,
+      "weekday": 3,
+      "start": "00:00",
+      "end": "02:00",
+      "rate": "1100.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 74,
+    "fields": {
+      "game_type": 4,
+      "weekday": 3,
+      "start": "10:00",
+      "end": "18:00",
+      "rate": "700.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 75,
+    "fields": {
+      "game_type": 4,
+      "weekday": 3,
+      "start": "18:00",
+      "end": "23:59:59",
+      "rate": "1100.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 76,
+    "fields": {
+      "game_type": 4,
+      "weekday": 4,
+      "start": "00:00",
+      "end": "02:00",
+      "rate": "1100.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 77,
+    "fields": {
+      "game_type": 4,
+      "weekday": 4,
+      "start": "10:00",
+      "end": "18:00",
+      "rate": "950.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 78,
+    "fields": {
+      "game_type": 4,
+      "weekday": 4,
+      "start": "18:00",
+      "end": "23:59:59",
+      "rate": "1450.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 79,
+    "fields": {
+      "game_type": 4,
+      "weekday": 5,
+      "start": "00:00",
+      "end": "02:00",
+      "rate": "1450.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 80,
+    "fields": {
+      "game_type": 4,
+      "weekday": 5,
+      "start": "10:00",
+      "end": "18:00",
+      "rate": "950.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 81,
+    "fields": {
+      "game_type": 4,
+      "weekday": 5,
+      "start": "18:00",
+      "end": "23:59:59",
+      "rate": "1450.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 82,
+    "fields": {
+      "game_type": 4,
+      "weekday": 6,
+      "start": "00:00",
+      "end": "02:00",
+      "rate": "1450.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 83,
+    "fields": {
+      "game_type": 4,
+      "weekday": 6,
+      "start": "10:00",
+      "end": "18:00",
+      "rate": "950.00"
+    }
+  },
+  {
+    "model": "club.tariff",
+    "pk": 84,
+    "fields": {
+      "game_type": 4,
+      "weekday": 6,
+      "start": "18:00",
+      "end": "23:59:59",
+      "rate": "1450.00"
+    }
+  },
+  {
+    "model": "club.review",
+    "pk": 1,
+    "fields": {
+      "name": "Дмитрий",
+      "text": "Прекрасно провели вечер с коллегами. Очень удобно, что сразу рассчитали сумму со скидкой карты.",
+      "rating": 5,
+      "date": "2026-11-01"
+    }
+  },
+  {
+    "model": "club.review",
+    "pk": 2,
+    "fields": {
+      "name": "Марина",
+      "text": "Отличные дорожки, автоматика работает идеально! Пицца в баре просто бомба.",
+      "rating": 5,
+      "date": "2026-11-09"
+    }
+  },
+  {
+    "model": "club.review",
+    "pk": 3,
+    "fields": {
+      "name": "Сергей",
+      "text": "Прекрасно провели вечер с коллегами. Очень удобно, что сразу рассчитали сумму со скидкой карты.",
+      "rating": 5,
+      "date": "2026-11-01"
+    }
+  },
+  {
+    "model": "club.review",
+    "pk": 4,
+    "fields": {
+      "name": "Елена",
+      "text": "Брали 2 дорожки на 10 человек, места хватило с запасом. Быстрая подача закусок из бара.",
+      "rating": 5,
+      "date": "2026-11-09"
+    }
+  },
+  {
+    "model": "club.review",
+    "pk": 5,
+    "fields": {
+      "name": "Артём",
+      "text": "Брали 2 дорожки на 10 человек, места хватило с запасом. Быстрая подача закусок из бара.",
+      "rating": 5,
+      "date": "2026-11-09"
+    }
+  },
+  {
+    "model": "club.review",
+    "pk": 6,
+    "fields": {
+      "name": "Анна",
+      "text": "Столы для русского бильярда в отличном состоянии, шары чистые и идеально отполированы.",
+      "rating": 5,
+      "date": "2026-11-09"
+    }
+  },
+  {
+    "model": "club.category",
+    "pk": 1,
+    "fields": {
+      "name": "Снеки и закуски"
+    }
+  },
+  {
+    "model": "club.category",
+    "pk": 2,
+    "fields": {
+      "name": "Горячие блюда и пицца"
+    }
+  },
+  {
+    "model": "club.category",
+    "pk": 3,
+    "fields": {
+      "name": "Напитки и коктейли"
+    }
+  },
+  {
+    "model": "club.category",
+    "pk": 4,
+    "fields": {
+      "name": "Десерты"
+    }
+  },
+  {
+    "model": "club.menuitem",
+    "pk": 1,
+    "fields": {
+      "category": 1,
+      "name": "Сырные палочки с клюквенным соусом",
+      "description": "Хрустящая корочка, нежная моцарелла",
+      "price": "380",
+      "portion": "200 г",
+      "image": "images/sticks.webp",
+      "active": true
+    }
+  },
+  {
+    "model": "club.menuitem",
+    "pk": 2,
+    "fields": {
+      "category": 1,
+      "name": "Гренки чесночные с соусом тар-тар",
+      "description": "Бородинский хлеб с чесноком и пармезаном",
+      "price": "290",
+      "portion": "180 г",
+      "image": "images/fries.webp",
+      "active": true
+    }
+  },
+  {
+    "model": "club.menuitem",
+    "pk": 3,
+    "fields": {
+      "category": 1,
+      "name": "Куриные крылышки BBQ",
+      "description": "Крылышки в карамельной глазури с кунжутом",
+      "price": "490",
+      "portion": "320 г",
+      "image": "images/wings.webp",
+      "active": true
+    }
+  },
+  {
+    "model": "club.menuitem",
+    "pk": 4,
+    "fields": {
+      "category": 1,
+      "name": "Кесадилья с курицей и перцем",
+      "description": "Сыр чеддер, филе гриль, соус сальса",
+      "price": "460",
+      "portion": "280 г",
+      "image": "images/pizza.webp",
+      "active": true
+    }
+  },
+  {
+    "model": "club.menuitem",
+    "pk": 5,
+    "fields": {
+      "category": 1,
+      "name": "Начос гранде с сырным соусом и халапеньо",
+      "description": "Кукурузные чипсы, гуакамоле, сальса",
+      "price": "390",
+      "portion": "250 г",
+      "image": "images/nachos.webp",
+      "active": true
+    }
+  },
+  {
+    "model": "club.menuitem",
+    "pk": 6,
+    "fields": {
+      "category": 2,
+      "name": "Пицца «Мясное ассорти»",
+      "description": "Бекон, пепперони, буженина, моцарелла, томатный соус",
+      "price": "750",
+      "portion": "550 г",
+      "image": "images/pizza.webp",
+      "active": true
+    }
+  },
+  {
+    "model": "club.menuitem",
+    "pk": 7,
+    "fields": {
+      "category": 2,
+      "name": "Пицца «Пепперони Классик»",
+      "description": "Пикантная салями пепперони, сыр моцарелла",
+      "price": "680",
+      "portion": "500 г",
+      "image": "images/pizza.webp",
+      "active": true
+    }
+  },
+  {
+    "model": "club.menuitem",
+    "pk": 8,
+    "fields": {
+      "category": 2,
+      "name": "Пицца «Четыре сыра»",
+      "description": "Дорблю, пармезан, чеддер, моцарелла на сливочном соусе",
+      "price": "690",
+      "portion": "480 г",
+      "image": "images/pizza.webp",
+      "active": true
+    }
+  },
+  {
+    "model": "club.menuitem",
+    "pk": 9,
+    "fields": {
+      "category": 2,
+      "name": "Бургер «Страйк» с говядиной и картофелем фри",
+      "description": "Мраморная говядина, сыр чеддер, луковые кольца",
+      "price": "590",
+      "portion": "420 г",
+      "image": "images/burger.webp",
+      "active": true
+    }
+  },
+  {
+    "model": "club.menuitem",
+    "pk": 10,
+    "fields": {
+      "category": 2,
+      "name": "Клаб-сэндвич с индейкой",
+      "description": "Тосты, копчёная индейка, бекон, лист салата",
+      "price": "420",
+      "portion": "310 г",
+      "image": "images/burger.webp",
+      "active": true
+    }
+  },
+  {
+    "model": "club.menuitem",
+    "pk": 11,
+    "fields": {
+      "category": 3,
+      "name": "Морс ягодный домашний",
+      "description": "Освежающий клюквенно-брусничный морс",
+      "price": "190",
+      "portion": "0.5 л",
+      "image": "images/cocktail.webp",
+      "active": true
+    }
+  },
+  {
+    "model": "club.menuitem",
+    "pk": 12,
+    "fields": {
+      "category": 3,
+      "name": "Лимонад «Маракуйя-Мята»",
+      "description": "Свежая мята, пюре маракуйи, газированная вода",
+      "price": "320",
+      "portion": "0.5 л",
+      "image": "images/cocktail.webp",
+      "active": true
+    }
+  },
+  {
+    "model": "club.menuitem",
+    "pk": 13,
+    "fields": {
+      "category": 3,
+      "name": "Коктейль «Мохито Классический»",
+      "description": "Лайм, мята, тростниковый сахар, содовая",
+      "price": "380",
+      "portion": "0.4 л",
+      "image": "images/cocktail.webp",
+      "active": true
+    }
+  },
+  {
+    "model": "club.menuitem",
+    "pk": 14,
+    "fields": {
+      "category": 3,
+      "name": "Коктейль «Пина Колада безалкогольная»",
+      "description": "Ананасовый сок, кокосовые сливки, взбитые сливки",
+      "price": "390",
+      "portion": "0.35 л",
+      "image": "images/cocktail.webp",
+      "active": true
+    }
+  },
+  {
+    "model": "club.menuitem",
+    "pk": 15,
+    "fields": {
+      "category": 4,
+      "name": "Чизкейк Нью-Йорк с ягодным топингом",
+      "description": "Классический сырный десерт",
+      "price": "350",
+      "portion": "150 г",
+      "image": "images/cheesecake.webp",
+      "active": true
+    }
+  },
+  {
+    "model": "club.menuitem",
+    "pk": 16,
+    "fields": {
+      "category": 4,
+      "name": "Шоколадный фондан с шариком мороженого",
+      "description": "Горячий кекс с жидким бельгийским шоколадом",
+      "price": "390",
+      "portion": "160 г",
+      "image": "images/cheesecake.webp",
+      "active": true
+    }
+  }
+]
