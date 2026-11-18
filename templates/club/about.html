@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}О клубе · Страйк &amp; Пул{% endblock %}
+{% block content %}
+<h1>О клубе «Страйк &amp; Пул»</h1><div class="catalog-grid"><section class="card"><h2>Игровые залы</h2><p>Дорожки Brunswick, столы для русской пирамиды, пула и снукера.</p><a class="btn btn-secondary" href="{% url 'club:booking_create' %}">Подобрать зону</a></section><section class="card"><h2>Бар и кухня</h2><p>Горячие блюда, закуски и напитки можно выбрать заранее в меню клуба.</p><a class="btn btn-secondary" href="{% url 'club:menu_catalog' %}">Посмотреть меню</a></section><section class="card"><h2>Как нас найти</h2><p>Москва, ул. Спортивная, д. 12</p><p>Ежедневно с 10:00 до 02:00</p><p>+7 (495) 123-45-67</p></section></div>
+{% endblock %}

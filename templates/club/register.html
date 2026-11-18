@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Регистрация · Страйк &amp; Пул{% endblock %}
+{% block content %}
+<section class="card narrow"><h1>Регистрация</h1><p>Регистрация новых участников пока закрыта. Если у вас уже есть профиль, войдите в личный кабинет.</p><a class="btn btn-primary" href="{% url 'club:login' %}">Войти</a></section>
+{% endblock %}

@@ -1,0 +1,1 @@
+{% load static %}{% if item.photo or item.image %}<img class="dish-photo" src="{% if item.photo %}{{ item.photo.url }}{% else %}{% static item.image %}{% endif %}" alt="{{ item.name }}" width="640" height="426" loading="lazy">{% endif %}

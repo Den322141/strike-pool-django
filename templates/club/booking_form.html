@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Бронирование · Страйк &amp; Пул{% endblock %}
+{% block content %}
+<h1>Бронирование дорожки или стола</h1>
+<form class="card filters" method="get"><label>Игровой формат<select name="game"><option value="">Все форматы</option>{% for g in games %}<option value="{{ g.slug }}"{% if game == g.slug %} selected{% endif %}>{{ g.name }}</option>{% endfor %}</select></label>
+<label>Количество гостей<input name="guests" type="number" min="1" max="100" value="{{ guests }}"></label><button class="btn btn-primary">Подобрать зону</button></form>
+<h2>Зоны по вместимости</h2><div class="catalog-grid">{% for zone in zones %}<article class="card"><p class="muted">{{ zone.game_type.name }}</p><h3>{{ zone.name }}</h3><p>До {{ zone.capacity }} гостей{% if zone.vip %} · VIP{% endif %}</p></article>{% empty %}<p>Для такой компании одной зоны недостаточно. Попробуйте другой формат или уменьшите число гостей.</p>{% endfor %}</div>
+{% endblock %}

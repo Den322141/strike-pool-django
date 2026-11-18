@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Личный кабинет · Страйк &amp; Пул{% endblock %}
+{% block content %}
+<h1>Личный кабинет</h1><section class="card narrow"><h2>{% if user.is_authenticated %}{{ user.get_full_name|default:user.username }}{% else %}Профиль гостя{% endif %}</h2>
+{% if user.is_authenticated %}<p>{{ user.email }}</p><h3>Клубные карты</h3>{% for card in cards %}<p>{{ card.number }} · {{ card.discount|floatformat }}% · до {{ card.valid_until|date:"d.m.Y" }}</p>{% empty %}<p>Карта пока не привязана.</p>{% endfor %}<a class="btn btn-secondary" href="{% url 'club:booking_list' %}">Мои бронирования</a>
+{% else %}<p>Войдите, чтобы посмотреть клубную карту и свои бронирования.</p><a class="btn btn-primary" href="{% url 'club:login' %}">Войти</a>{% endif %}</section>
+{% endblock %}

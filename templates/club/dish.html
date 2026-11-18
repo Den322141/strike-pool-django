@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{ item.name }} · Страйк &amp; Пул{% endblock %}
+{% block content %}
+<a class="back" href="{% url 'club:menu_catalog' %}">← Бар и кухня</a>
+<article class="card dish-detail">{% include 'club/item_photo.html' %}
+<div><p class="muted">{{ item.category.name }}</p><h1>{{ item.name }}</h1><p>{{ item.description }}</p><p>{{ item.portion }}</p><strong>{{ item.price|floatformat:2 }} ₽</strong><p>{% if item.active %}В наличии{% else %}Нет в наличии{% endif %}</p></div></article>
+{% endblock %}

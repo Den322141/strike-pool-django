@@ -14,12 +14,12 @@
   </section>
 
   <section id="formats" class="game-section" aria-labelledby="formats-title">
-    <div class="section-heading"><h2 id="formats-title">Игровые форматы</h2><span>4 направления</span></div>
+    <div class="section-heading"><h2 id="formats-title">Игровые форматы</h2><span>Направлений: {{ games|length }}</span></div>
     <div class="grid-4 game-grid">
       {% for game in games %}
         <article class="card game-card">
           <div class="game-photo">
-            <img src="{% static game.photo %}" alt="{{ game.name }} — игровая зона клуба" width="640" height="426" loading="lazy">
+            {% if game.image %}<img src="{% static game.image %}" alt="{{ game.name }} — игровая зона клуба" width="640" height="426" loading="lazy">{% endif %}
             <span class="photo-label">{{ game.label }}</span>
           </div>
           <h3>{{ game.name }}</h3>
@@ -27,7 +27,7 @@
           <div class="game-capacity">{% icon 'users' %}<span>До <strong>{{ game.players }}</strong> чел. на одну зону</span>
             {% if game.slug == 'bowling' %}<span class="capacity-note">&gt;6 гостей — автоподбор 2 дорожек</span>{% endif %}
           </div>
-          <a href="{% url 'club:booking_create' %}" class="btn btn-secondary btn-block btn-sm">Выбрать {{ game.name }} →</a>
+          <a href="{% url 'club:booking_create' %}?game={{ game.slug|urlencode }}" class="btn btn-secondary btn-block btn-sm">Выбрать {{ game.name }} →</a>
         </article>
       {% endfor %}
     </div>
@@ -46,12 +46,12 @@
       </ul>
     </div>
     <div class="hall-heading">
-      <h3>{% icon 'bowling' %} Боулинг-цех Brunswick (Дорожки 1–6)</h3>
+      <h3>{% icon 'bowling' %} Боулинг-цех Brunswick (Дорожек: {{ lanes|length }})</h3>
       <p>Покрытие: светлый клен · Пинспоттеры GS-X</p>
     </div>
     <div class="lanes-blueprint-grid">
       {% for lane in lanes %}
-        <a class="lane-unit" href="{% url 'club:booking_create' %}" aria-label="Выбрать дорожку №{{ lane.number }}">
+        <a class="lane-unit" href="{% url 'club:booking_create' %}?game=bowling" aria-label="Выбрать дорожку №{{ lane.number }}">
           <div class="pin-deck" aria-hidden="true"><div class="pins-triangle">
             <div class="pin-row"><span class="pin-dot"></span></div>
             <div class="pin-row"><span class="pin-dot"></span><span class="pin-dot"></span></div>
@@ -62,7 +62,7 @@
           <div class="lane-number-badge">№{{ lane.number }}</div>
           <div class="lane-title-sub">Дорожка №{{ lane.number }}{% if lane.vip %} VIP{% endif %}</div>
           {% if lane.vip %}<span class="badge badge-vip zone-vip">VIP</span>{% endif %}
-          <div class="zone-status-text">● Свободно</div>
+          <div class="zone-status-text">{% if lane.active %}● Доступна{% else %}На обслуживании{% endif %}</div>
         </a>
       {% endfor %}
     </div>
@@ -72,15 +72,15 @@
     </div>
     <div class="tables-blueprint-grid">
       {% for table in tables %}
-        <a class="table-unit" href="{% url 'club:booking_create' %}" aria-label="Выбрать {{ table.title }}">
-          <div class="felt-table {{ table.kind }}" aria-hidden="true">
+        <a class="table-unit" href="{% url 'club:booking_create' %}?game={{ table.game_type.slug|urlencode }}" aria-label="Выбрать {{ table.name }}">
+          <div class="felt-table {{ table.game_type.slug }}" aria-hidden="true">
             <span class="pocket pocket-tl"></span><span class="pocket pocket-tc"></span><span class="pocket pocket-tr"></span>
             <span class="pocket pocket-bl"></span><span class="pocket pocket-bc"></span><span class="pocket pocket-br"></span>
-            <div class="balls-cluster"><span class="b-ball"></span><span class="b-ball{% if table.kind == 'pool' %} red{% endif %}"></span><span class="b-ball{% if table.kind == 'pool' %} yellow{% endif %}"></span></div>
+            <div class="balls-cluster"><span class="b-ball"></span><span class="b-ball{% if table.game_type.slug == 'pool' %} red{% endif %}"></span><span class="b-ball{% if table.game_type.slug == 'pool' %} yellow{% endif %}"></span></div>
           </div>
           <div class="table-unit-info">
-            <div><div class="table-unit-name">#{{ table.number }} · {{ table.title|truncatechars:23 }}</div><p class="table-kind">{{ table.game }}</p></div>
-            <div class="table-status">{% if table.vip %}<span class="badge badge-vip zone-vip">VIP</span>{% endif %}<div class="zone-status-text">Свободен</div></div>
+            <div><div class="table-unit-name">#{{ table.number }} · {{ table.name|truncatechars:23 }}</div><p class="table-kind">{{ table.game_type.name }}</p></div>
+            <div class="table-status">{% if table.vip %}<span class="badge badge-vip zone-vip">VIP</span>{% endif %}<div class="zone-status-text">{% if table.active %}Доступен{% else %}На обслуживании{% endif %}</div></div>
           </div>
         </a>
       {% endfor %}
@@ -89,15 +89,15 @@
 
   <div class="grid-2 benefits-grid">
     <section id="tariffs" class="card tariff-card" aria-labelledby="tariffs-title">
-      <h2 id="tariffs-title" class="card-title">{% icon 'clock' %} Тарифная сетка (руб / час)</h2>
+      <h2 id="tariffs-title" class="card-title">{% icon 'clock' %} Тарифы на {{ today|date:"d.m.Y" }}</h2>
       <div class="table-responsive">
         <table class="table tariff-table">
           <caption class="visually-hidden">Стоимость часа аренды в зависимости от игры, дня недели и времени</caption>
-          <thead><tr><th scope="col">Игра</th><th scope="col">Период</th><th scope="col">День (10:00–18:00)</th><th scope="col">Вечер (18:00–02:00)</th></tr></thead>
+          <thead><tr><th scope="col">Игра</th><th scope="col">Начало</th><th scope="col">Конец</th><th scope="col">Руб / час</th></tr></thead>
           <tbody>
-            {% for game, period, day, night in tariffs %}
-              <tr><th scope="row">{{ game }}</th><td>{{ period }}</td><td>{{ day }} ₽</td><td>{{ night }} ₽</td></tr>
-            {% endfor %}
+            {% for rate in tariffs %}
+              <tr><th scope="row">{{ rate.game_type.name }}</th><td>{{ rate.start|time:"H:i" }}</td><td>{% if rate.end.hour == 23 and rate.end.minute == 59 %}00:00{% else %}{{ rate.end|time:"H:i" }}{% endif %}</td><td>{{ rate.rate|floatformat:2 }}</td></tr>
+            {% empty %}<tr><td colspan="4">На сегодня тарифы не опубликованы.</td></tr>{% endfor %}
           </tbody>
         </table>
       </div>
@@ -116,8 +116,8 @@
     <div class="grid-3">
       {% for review in reviews %}
         <article class="review-card">
-          <div class="review-heading"><h3>{{ review.name }}</h3><span class="review-stars" aria-label="5 из 5">★★★★★</span></div>
-          <p>{{ review.text }}</p><p class="review-date">{{ review.date }}</p>
+          <div class="review-heading"><h3>{{ review.name }}</h3><span class="review-stars" aria-label="{{ review.rating }} из 5">{% for star in "12345" %}{% if forloop.counter <= review.rating %}★{% else %}☆{% endif %}{% endfor %}</span></div>
+          <p>{{ review.text }}</p><p class="review-date">{{ review.date|date:"d.m.Y" }}</p>
         </article>
       {% endfor %}
     </div>

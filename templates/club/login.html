@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Вход · Страйк &amp; Пул{% endblock %}
+{% block content %}
+<section class="card narrow"><h1>Вход в личный кабинет</h1><form method="post" class="stack">{% csrf_token %}{{ form.as_p }}<input type="hidden" name="next" value="{{ next }}"><button class="btn btn-primary">Войти</button></form></section>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Поиск по меню · Страйк &amp; Пул{% endblock %}
+{% block content %}
+<h1>Поиск по меню</h1>
+<form class="card filters" method="get" action="{% url 'club:search' %}">
+<label>Название, категория или состав<input type="search" name="q" maxlength="100" value="{{ q }}"></label><button class="btn btn-primary">Найти</button></form>
+{% if q %}<h2>Найдено по запросу «{{ q }}» — {{ page.paginator.count }}</h2>{% include 'club/items.html' %}{% else %}<p>Введите название блюда или ингредиент.</p>{% endif %}
+<a class="btn btn-secondary" href="{% url 'club:menu_catalog' %}">Всё меню</a>
+{% endblock %}

@@ -2,7 +2,7 @@ from html.parser import HTMLParser
 from urllib.parse import urlsplit
 
 from django.contrib.staticfiles import finders
-from django.test import SimpleTestCase
+from django.test import TestCase
 from django.urls import resolve, reverse
 
 
@@ -26,7 +26,9 @@ class PageParser(HTMLParser):
             self.landmarks.add(tag)
 
 
-class NavigationTests(SimpleTestCase):
+class NavigationTests(TestCase):
+    fixtures = ["club_catalog"]
+
     def test_named_routes_render(self):
         for name in ("home", "booking_create", "menu_catalog", "dashboard", "login", "register", "booking_list"):
             with self.subTest(route=name):

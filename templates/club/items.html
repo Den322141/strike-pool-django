@@ -1,0 +1,14 @@
+{% load static %}
+<div class="catalog-grid">
+{% for item in page %}
+<article class="card food-card">
+  {% include 'club/item_photo.html' %}
+  <p class="muted">{{ item.category.name }} · {{ item.portion }}</p>
+  <h3><a href="{% url 'club:dish' item.pk %}">{{ item.name }}</a></h3>
+  <p>{{ item.description|truncatechars:95 }}</p>
+  <div class="food-price"><strong>{{ item.price|floatformat:2 }} ₽</strong>{% if not item.active %}<span>Нет в наличии</span>{% endif %}</div>
+  <a class="btn btn-secondary" href="{% url 'club:dish' item.pk %}">Подробнее</a>
+</article>
+{% empty %}<p class="card">Блюд не найдено.</p>{% endfor %}
+</div>
+{% include 'club/pager.html' %}

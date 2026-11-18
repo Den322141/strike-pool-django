@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Показатели · Страйк &amp; Пул{% endblock %}
+{% block content %}
+<h1>Показатели клуба</h1><div class="catalog-grid"><article class="card"><h2>Игровых форматов</h2><strong>{{ games }}</strong></article><article class="card"><h2>Действующих зон</h2><strong>{{ zones }}</strong></article><article class="card"><h2>Блюд в наличии</h2><strong>{{ dishes }}</strong></article></div>
+{% endblock %}

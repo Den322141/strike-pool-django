@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Бар и кухня · Страйк &amp; Пул{% endblock %}
+{% block content %}
+<h1>Бар и кухня</h1>
+<form class="card filters" method="get" action="{% url 'club:search' %}">
+  <label>Поиск по меню<input type="search" name="q" placeholder="Название блюда или ингредиент" maxlength="100"></label>
+  <button class="btn btn-primary">Найти</button>
+</form>
+<nav class="chips" aria-label="Категории меню"><a class="btn btn-secondary" href="{% url 'club:menu_catalog' %}">Все блюда</a>{% for c in categories %}<a class="btn btn-secondary" href="{% url 'club:menu_catalog' %}?category={{ c.name|urlencode }}">{{ c.name }}</a>{% endfor %}</nav>
+<h2>{{ category|default:"Все блюда" }}</h2>
+{% include 'club/items.html' %}
+{% endblock %}
