@@ -58,6 +58,9 @@ def reserve(request, pk=None):
     with transaction.atomic():
         record = get_object_or_404(Booking, pk=pk, visitor=request.user) if pk else None
         initial = {"zones": Zone.objects.filter(game_type__slug=request.GET.get("game", ""), active=True)[:1]}
+        zone_id = request.GET.get("zone", "")
+        if zone_id.isascii() and zone_id.isdigit() and len(zone_id) <= 18:
+            initial["zones"] = Zone.objects.filter(pk=int(zone_id), active=True)
         if record:
             if record.status != "confirmed" or record.starts_at <= timezone.now() or record.payments.exists():
                 messages.info(request, "Изменить можно только предстоящую неоплаченную бронь.")
@@ -88,4 +91,4 @@ def quote(request):
     form = BookingForm(request.GET, booking=record)
     if form.is_valid():
         return JsonResponse({"total": format(form.total, ".2f")})
-    return JsonResponse({"errors": form.errors.get_json_data()}, status=422)
+    return JsonResponse({"errors": form.errors.get_json_data()})

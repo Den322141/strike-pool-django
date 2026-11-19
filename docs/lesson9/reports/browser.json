@@ -1,0 +1,207 @@
+{
+  "browser": "Chrome",
+  "pages": [
+    {
+      "page": "home",
+      "width": 375,
+      "status": 200,
+      "horizontalOverflow": false,
+      "consoleErrors": []
+    },
+    {
+      "page": "menu",
+      "width": 375,
+      "status": 200,
+      "horizontalOverflow": false,
+      "consoleErrors": []
+    },
+    {
+      "page": "dish",
+      "width": 375,
+      "status": 200,
+      "horizontalOverflow": false,
+      "consoleErrors": []
+    },
+    {
+      "page": "search",
+      "width": 375,
+      "status": 200,
+      "horizontalOverflow": false,
+      "consoleErrors": []
+    },
+    {
+      "page": "booking",
+      "width": 375,
+      "status": 200,
+      "horizontalOverflow": false,
+      "consoleErrors": []
+    },
+    {
+      "page": "profile",
+      "width": 375,
+      "status": 200,
+      "horizontalOverflow": false,
+      "consoleErrors": []
+    },
+    {
+      "page": "about",
+      "width": 375,
+      "status": 200,
+      "horizontalOverflow": false,
+      "consoleErrors": []
+    },
+    {
+      "page": "dashboard",
+      "width": 375,
+      "status": 200,
+      "horizontalOverflow": false,
+      "consoleErrors": []
+    },
+    {
+      "page": "bookings",
+      "width": 375,
+      "status": 200,
+      "horizontalOverflow": false,
+      "consoleErrors": []
+    },
+    {
+      "page": "login",
+      "width": 375,
+      "status": 200,
+      "horizontalOverflow": false,
+      "consoleErrors": []
+    },
+    {
+      "page": "register",
+      "width": 375,
+      "status": 200,
+      "horizontalOverflow": false,
+      "consoleErrors": []
+    },
+    {
+      "page": "detail",
+      "width": 375,
+      "status": 200,
+      "horizontalOverflow": false,
+      "consoleErrors": []
+    },
+    {
+      "page": "edit",
+      "width": 375,
+      "status": 200,
+      "horizontalOverflow": false,
+      "consoleErrors": []
+    },
+    {
+      "page": "receipt",
+      "width": 375,
+      "status": 200,
+      "horizontalOverflow": false,
+      "consoleErrors": []
+    },
+    {
+      "page": "home",
+      "width": 1440,
+      "status": 200,
+      "horizontalOverflow": false,
+      "consoleErrors": []
+    },
+    {
+      "page": "menu",
+      "width": 1440,
+      "status": 200,
+      "horizontalOverflow": false,
+      "consoleErrors": []
+    },
+    {
+      "page": "dish",
+      "width": 1440,
+      "status": 200,
+      "horizontalOverflow": false,
+      "consoleErrors": []
+    },
+    {
+      "page": "search",
+      "width": 1440,
+      "status": 200,
+      "horizontalOverflow": false,
+      "consoleErrors": []
+    },
+    {
+      "page": "booking",
+      "width": 1440,
+      "status": 200,
+      "horizontalOverflow": false,
+      "consoleErrors": []
+    },
+    {
+      "page": "profile",
+      "width": 1440,
+      "status": 200,
+      "horizontalOverflow": false,
+      "consoleErrors": []
+    },
+    {
+      "page": "about",
+      "width": 1440,
+      "status": 200,
+      "horizontalOverflow": false,
+      "consoleErrors": []
+    },
+    {
+      "page": "dashboard",
+      "width": 1440,
+      "status": 200,
+      "horizontalOverflow": false,
+      "consoleErrors": []
+    },
+    {
+      "page": "bookings",
+      "width": 1440,
+      "status": 200,
+      "horizontalOverflow": false,
+      "consoleErrors": []
+    },
+    {
+      "page": "login",
+      "width": 1440,
+      "status": 200,
+      "horizontalOverflow": false,
+      "consoleErrors": []
+    },
+    {
+      "page": "register",
+      "width": 1440,
+      "status": 200,
+      "horizontalOverflow": false,
+      "consoleErrors": []
+    },
+    {
+      "page": "detail",
+      "width": 1440,
+      "status": 200,
+      "horizontalOverflow": false,
+      "consoleErrors": []
+    },
+    {
+      "page": "edit",
+      "width": 1440,
+      "status": 200,
+      "horizontalOverflow": false,
+      "consoleErrors": []
+    },
+    {
+      "page": "receipt",
+      "width": 1440,
+      "status": 200,
+      "horizontalOverflow": false,
+      "consoleErrors": []
+    }
+  ],
+  "scenarios": [
+    "Живой поиск по меню",
+    "Пересчёт суммы при изменении длительности",
+    "Проверка email, телефона, имени и пароля в браузере",
+    "Регистрация → выбор стола на схеме → создание брони → изменение числа гостей → талон"
+  ]
+}

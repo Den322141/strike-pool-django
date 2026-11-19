@@ -1,0 +1,144 @@
+{
+  "cssvalidation" : {
+     "uri"       : "style.css",
+     "checkedby" : "http://www.w3.org/2005/07/css-validator",
+     "csslevel"  : "css3",
+     "date"      : "2026-11-19T05:37:30Z",
+     "timestamp" : "1795066650942",
+     "validity"  : true,
+     "result"    : {
+		"errorcount"   : 0,
+		"warningcount" : 16
+                   }
+       ,
+     "warnings"   : [
+      {
+         "source"  : "file://localhost/style.css",
+         "line"    : 43,
+         "message" :  "\u201C-webkit-font-smoothing\u201D is a vendor extension",
+         "type"    :  "vendor-extension",
+         "level"   : 0
+      }
+     ,
+      {
+         "source"  : "file://localhost/style.css",
+         "line"    : 44,
+         "message" :  "\u201C-moz-osx-font-smoothing\u201D is a vendor extension",
+         "type"    :  "vendor-extension",
+         "level"   : 0
+      }
+     ,
+      {
+         "source"  : "file://localhost/style.css",
+         "line"    : 48,
+         "message" :  "Due to their dynamic nature, CSS variables are currently not statically checked",
+         "type"    :  "css-variable",
+         "level"   : 0
+      }
+     ,
+      {
+         "source"  : "file://localhost/style.css",
+         "line"    : 77,
+         "message" :  "\u201C-webkit-backdrop-filter\u201D is a vendor extension",
+         "type"    :  "vendor-extension",
+         "level"   : 0
+      }
+     ,
+      {
+         "source"  : "file://localhost/style.css",
+         "line"    : 233,
+         "message" :  "Due to their dynamic nature, CSS variables are currently not statically checked",
+         "type"    :  "css-variable",
+         "level"   : 0
+      }
+     ,
+      {
+         "source"  : "file://localhost/style.css",
+         "line"    : 234,
+         "message" :  "\u201C-webkit-backdrop-filter\u201D is a vendor extension",
+         "type"    :  "vendor-extension",
+         "level"   : 0
+      }
+     ,
+      {
+         "source"  : "file://localhost/style.css",
+         "line"    : 236,
+         "message" :  "Due to their dynamic nature, CSS variables are currently not statically checked",
+         "type"    :  "css-variable",
+         "level"   : 0
+      }
+     ,
+      {
+         "source"  : "file://localhost/style.css",
+         "line"    : 311,
+         "message" :  "\u201C-webkit-backdrop-filter\u201D is a vendor extension",
+         "type"    :  "vendor-extension",
+         "level"   : 0
+      }
+     ,
+      {
+         "source"  : "file://localhost/style.css",
+         "line"    : 371,
+         "message" :  "\u201C-webkit-backdrop-filter\u201D is a vendor extension",
+         "type"    :  "vendor-extension",
+         "level"   : 0
+      }
+     ,
+      {
+         "source"  : "file://localhost/style.css",
+         "line"    : 437,
+         "message" :  "Due to their dynamic nature, CSS variables are currently not statically checked",
+         "type"    :  "css-variable",
+         "level"   : 0
+      }
+     ,
+      {
+         "source"  : "file://localhost/style.css",
+         "line"    : 438,
+         "message" :  "\u201C-webkit-backdrop-filter\u201D is a vendor extension",
+         "type"    :  "vendor-extension",
+         "level"   : 0
+      }
+     ,
+      {
+         "source"  : "file://localhost/style.css",
+         "line"    : 439,
+         "message" :  "Due to their dynamic nature, CSS variables are currently not statically checked",
+         "type"    :  "css-variable",
+         "level"   : 0
+      }
+     ,
+      {
+         "source"  : "file://localhost/style.css",
+         "line"    : 494,
+         "message" :  "Due to their dynamic nature, CSS variables are currently not statically checked",
+         "type"    :  "css-variable",
+         "level"   : 0
+      }
+     ,
+      {
+         "source"  : "file://localhost/style.css",
+         "line"    : 495,
+         "message" :  "\u201C-webkit-backdrop-filter\u201D is a vendor extension",
+         "type"    :  "vendor-extension",
+         "level"   : 0
+      }
+     ,
+      {
+         "source"  : "file://localhost/style.css",
+         "line"    : 499,
+         "message" :  "Due to their dynamic nature, CSS variables are currently not statically checked",
+         "type"    :  "css-variable",
+         "level"   : 0
+      }
+     ,
+      {
+         "source"  : "file://localhost/style.css",
+         "line"    : 826,
+         "message" :  "\u201C-webkit-backdrop-filter\u201D is a vendor extension",
+         "type"    :  "vendor-extension",
+         "level"   : 0
+      }
+                     ]
+    }
+}

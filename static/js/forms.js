@@ -1,15 +1,21 @@
 for (const form of document.querySelectorAll('.validated')) {
   const password = form.elements.password1;
   const repeat = form.elements.password2;
-  function validatePasswords() {
+  const zones = Array.from(form.querySelectorAll('input[name="zones"]'));
+  function validateFields() {
+    if (zones.length) {
+      const hasZone = zones.some(zone => zone.checked);
+      zones[0].setCustomValidity(hasZone ? '' : 'Выберите хотя бы одну дорожку или стол.');
+    }
     if (password && repeat) {
       password.setCustomValidity(password.value && password.value.length < 8 ? 'Введите не меньше 8 символов.' : '');
       repeat.setCustomValidity(repeat.value && password.value !== repeat.value ? 'Пароли должны совпадать.' : '');
     }
   }
-  form.addEventListener('input', validatePasswords);
+  validateFields();
+  form.addEventListener('input', validateFields);
   form.addEventListener('submit', event => {
-    validatePasswords();
+    validateFields();
     if (!form.reportValidity()) event.preventDefault();
   });
 }
@@ -50,7 +56,7 @@ if (booking) {
     }
     if (booking.dataset.booking) params.set('booking', booking.dataset.booking);
     const response = await fetch(booking.dataset.quote + '?' + params, {signal});
-    if (!response.ok && response.status !== 422) throw new Error('quote');
+    if (!response.ok) throw new Error('quote');
     const data = await response.json();
     if (signal.aborted) return;
     output.textContent = data.errors ? Object.values(data.errors).flat().map(item => item.message).join(' ')

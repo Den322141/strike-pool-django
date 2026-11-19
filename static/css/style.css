@@ -172,13 +172,13 @@ body {
 }
 
 .btn-primary {
-  background-color: var(--apple-blue);
+  background-color: #096cc4;
   color: #fff;
   box-shadow: 0 4px 16px var(--apple-blue-glow);
 }
 
 .btn-primary:hover {
-  background-color: var(--apple-blue-hover);
+  background-color: #075da9;
   box-shadow: 0 6px 20px rgba(41, 151, 255, 0.4);
 }
 

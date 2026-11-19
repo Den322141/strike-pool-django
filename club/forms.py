@@ -43,6 +43,9 @@ class BookingForm(forms.Form):
         if self.errors:
             return data
         start = data["starts_at"]
+        if start.year >= 9999:
+            self.add_error("starts_at", "Проверьте год бронирования.")
+            return data
         end = start + timedelta(hours=data["hours"])
         zones = list(data["zones"])
         if start <= timezone.now():
@@ -66,7 +69,7 @@ class BookingForm(forms.Form):
                 if rate is None:
                     self.add_error("starts_at", "Часть выбранного времени вне часов работы клуба.")
                     return data
-                boundary = cursor.replace(hour=rate.end.hour, minute=rate.end.minute, second=rate.end.second)
+                boundary = cursor.replace(hour=rate.end.hour, minute=rate.end.minute, second=rate.end.second, microsecond=rate.end.microsecond)
                 if rate.end.isoformat() == "23:59:59":
                     boundary += timedelta(seconds=1)
                 until = min(end, boundary)

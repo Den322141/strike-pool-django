@@ -1,0 +1,60 @@
+{
+  "about": {
+    "version": "26.11.17",
+    "messages": []
+  },
+  "booking": {
+    "version": "26.11.17",
+    "messages": []
+  },
+  "bookings": {
+    "version": "26.11.17",
+    "messages": []
+  },
+  "dashboard": {
+    "version": "26.11.17",
+    "messages": []
+  },
+  "detail": {
+    "version": "26.11.17",
+    "messages": []
+  },
+  "dish": {
+    "version": "26.11.17",
+    "messages": []
+  },
+  "edit": {
+    "version": "26.11.17",
+    "messages": []
+  },
+  "home": {
+    "version": "26.11.17",
+    "messages": [],
+    "language": "ru"
+  },
+  "login": {
+    "version": "26.11.17",
+    "messages": []
+  },
+  "menu": {
+    "version": "26.11.17",
+    "messages": [],
+    "language": "ru"
+  },
+  "profile": {
+    "version": "26.11.17",
+    "messages": []
+  },
+  "receipt": {
+    "version": "26.11.17",
+    "messages": []
+  },
+  "register": {
+    "version": "26.11.17",
+    "messages": []
+  },
+  "search": {
+    "version": "26.11.17",
+    "messages": []
+  }
+}
