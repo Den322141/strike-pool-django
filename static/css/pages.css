@@ -73,3 +73,10 @@
   .catalog-options label:last-child { grid-column: 1 / -1; }
 }
 .signup-preview { padding: 0; border: 0; } .signup-preview legend { padding-block: 12px; font-weight: 600; } .signup-preview button:disabled { opacity: .55; }
+
+.field fieldset { padding: 12px; border: 1px solid var(--glass-border-light); border-radius: var(--radius-md); }
+.field input[type="checkbox"] { display: inline-block; width: 18px; height: 18px; margin: 0 8px 0 0; }
+.field fieldset label { display: flex; align-items: center; min-height: 40px; }
+.field .hint { margin-block: 6px; font-size: .85rem; color: var(--text-secondary); }
+.field .hint ul { padding-left: 20px; }
+.quote-result, .notice { color: var(--text-primary); }

@@ -5,6 +5,6 @@
 <h1>Поиск по меню</h1>
 <form class="card filters" method="get" action="{% url 'club:search' %}">
 <label>Название, категория или состав<input type="search" name="q" maxlength="100" value="{{ q }}"></label><button class="btn btn-primary">Найти</button></form>
-{% if submitted %}<h2>Найдено{% if q %} по запросу «{{ q }}»{% endif %} — {{ page.paginator.count }}</h2>{% include 'club/items.html' %}{% else %}<p>Введите название блюда или ингредиент.</p>{% endif %}
+{% if submitted %}<h2 id="search-count">Найдено{% if q %} по запросу «{{ q }}»{% endif %} — {{ page.paginator.count }}</h2><div id="search-results">{% include 'club/items.html' %}</div>{% else %}<p>Введите название блюда или ингредиент.</p>{% endif %}
 <a class="btn btn-secondary" href="{% url 'club:menu_catalog' %}">Всё меню</a>
 {% endblock %}

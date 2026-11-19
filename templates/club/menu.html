@@ -9,5 +9,5 @@
 <label class="stock"><input type="checkbox" name="available" value="1"> Только в наличии</label>
 <label>Цена от, ₽<input type="number" min="0" step=".01" name="min_price"></label><label>Цена до, ₽<input type="number" min="0" step=".01" name="max_price"></label>
 <label>Сортировка<select name="order"><option value="">По категории</option><option value="price">Сначала дешевле</option><option value="-price">Сначала дороже</option></select></label></div></form>
-<h2 class="visually-hidden">Блюда и напитки</h2>{% include 'club/items.html' %}
+<h2 class="visually-hidden">Блюда и напитки</h2><p id="search-status" role="status"></p><div id="menu-results">{% include 'club/items.html' %}</div>
 {% endblock %}
