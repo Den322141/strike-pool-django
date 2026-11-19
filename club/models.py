@@ -303,3 +303,8 @@ class Review(models.Model):
     text = models.TextField()
     date = models.DateField()
     rating = models.PositiveSmallIntegerField(default=5)
+
+
+class Contact(models.Model):
+    user = models.OneToOneField("auth.User", on_delete=models.CASCADE, related_name="club_contact")
+    phone = models.CharField(max_length=16)

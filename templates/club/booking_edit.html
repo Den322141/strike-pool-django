@@ -1,6 +1,0 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block title %}Параметры брони · Страйк &amp; Пул{% endblock %}
-{% block content %}
-<a class="back" href="{% url 'club:booking_detail' booking.pk %}">← Детали бронирования</a><section class="card narrow"><h1>Параметры брони</h1><p>{{ booking.number }} · {{ booking.starts_at|date:"d.m.Y H:i" }}</p><p>Подберите зоны для нового числа гостей. Подбор сохраняет текущую бронь без изменений.</p><form class="stack filters" method="get" action="{% url 'club:booking_create' %}"><label>Гостей<input type="number" name="guests" min="1" max="100" value="{{ booking.guests }}"></label><button class="btn btn-primary">Посмотреть подходящие зоны</button></form></section>
-{% endblock %}

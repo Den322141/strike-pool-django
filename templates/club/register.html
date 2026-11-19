@@ -1,15 +1,7 @@
 {% extends 'base.html' %}
-{% load static %}
 {% block title %}Регистрация · Страйк &amp; Пул{% endblock %}
 {% block content %}
-<section class="card narrow"><h1>Регистрация</h1><p>Приём новых заявок пока закрыт.</p>
-<fieldset disabled class="stack signup-preview"><legend>Данные участника</legend>
-<label>Имя пользователя<input type="text" autocomplete="username"></label>
-<label>Ваше имя<input type="text" autocomplete="given-name"></label>
-<label>Электронная почта<input type="email" autocomplete="email"></label>
-<label>Номер телефона<input type="tel" autocomplete="tel"></label>
-<label>Пароль<input type="password" autocomplete="new-password"></label>
-<label>Повторите пароль<input type="password" autocomplete="new-password"></label>
-<button class="btn btn-primary" type="button">Зарегистрироваться</button></fieldset>
-<a class="back" href="{% url 'club:login' %}">Уже есть профиль? Войти</a></section>
+<section class="card narrow"><h1>Регистрация</h1>
+<form class="stack validated" method="post">{% csrf_token %}{% include 'club/fields.html' %}
+<button class="btn btn-primary">Создать профиль</button></form></section>
 {% endblock %}

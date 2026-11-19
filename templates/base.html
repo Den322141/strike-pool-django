@@ -32,6 +32,7 @@
     </div>
   </header>
   <main id="main-content" class="container page-content" tabindex="-1">
+    {% for message in messages %}<p class="card notice" role="status">{{ message }}</p>{% endfor %}
     {% block content %}{% endblock %}
   </main>
   <footer class="site-footer">

@@ -68,20 +68,6 @@ def dish(request, pk):
     return render(request, "club/dish.html", {"item": item})
 
 
-def booking_create(request):
-    game = request.GET.get("game", "")
-    try:
-        guests = min(100, max(1, int(request.GET.get("guests", 1))))
-    except ValueError:
-        guests = 1
-    zones = Zone.objects.filter(active=True, capacity__gte=guests).select_related("game_type")
-    if game:
-        zones = zones.filter(game_type__slug=game)
-    return render(request, "club/booking_form.html", {
-        "games": GameType.objects.all(), "game": game, "guests": guests, "zones": zones,
-    })
-
-
 def profile(request):
     cards = request.user.club_cards.all() if request.user.is_authenticated else []
     return render(request, "club/profile.html", {"cards": cards})
