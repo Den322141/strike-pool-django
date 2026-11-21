@@ -14,3 +14,4 @@ staticfiles/
 .DS_Store
 Thumbs.db
 *.log
+/lab13.sqlite3*
