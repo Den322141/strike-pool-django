@@ -1,3 +1,4 @@
+import logging
 import re
 from decimal import Decimal, InvalidOperation
 
@@ -8,6 +9,9 @@ from django.shortcuts import get_object_or_404, render
 from django.utils import timezone
 
 from .models import Booking, Category, GameType, MenuItem, Review, Tariff, Zone
+
+
+logger = logging.getLogger(__name__)
 
 
 def home(request):
@@ -33,6 +37,7 @@ def menu(request):
 
 
 def search(request):
+    logger.debug("Начат поиск по меню")
     query = request.GET.get("q", "").strip()[:100]
     items = MenuItem.objects.select_related("category")
     category = request.GET.get("category", "")
@@ -52,6 +57,7 @@ def search(request):
                     raise ValueError
                 items = items.filter(**{lookup: amount})
             except (InvalidOperation, ValueError):
+                logger.warning("Отклонена граница цены: %s", key)
                 items = items.none()
     order = request.GET.get("order")
     if order not in ("price", "-price"):
@@ -64,6 +70,7 @@ def search(request):
 
 
 def dish(request, pk):
+    logger.debug("Открытие блюда id=%s", pk)
     item = get_object_or_404(MenuItem.objects.select_related("category"), pk=pk)
     return render(request, "club/dish.html", {"item": item})
 

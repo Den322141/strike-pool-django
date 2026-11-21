@@ -1,9 +1,11 @@
+import logging
+
 from uuid import uuid4
 
 from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
-from django.db import transaction
+from django.db import DatabaseError, transaction
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.utils import timezone
@@ -15,6 +17,8 @@ from .models import Booking, BookingZone, ChargeSegment, Contact, Zone
 
 @require_http_methods(["GET", "POST"])
 def register(request):
+    logger = logging.getLogger(__name__)
+    logger.debug("Регистрация: %s", request.method)
     if request.user.is_authenticated:
         return redirect("club:profile")
     with transaction.atomic():
@@ -22,6 +26,7 @@ def register(request):
         if request.method == "POST" and form.is_valid():
             user = form.save()
             Contact.objects.create(user=user, phone=form.cleaned_data["phone"])
+            logger.info("Создан профиль id=%s", user.pk)
             login(request, user)
             messages.success(request, "Профиль создан.")
             return redirect("club:profile")
@@ -69,7 +74,12 @@ def reserve(request, pk=None):
                        "hours": (record.ends_at-record.starts_at).total_seconds()/3600, "zones": record.zones.all()}
         form = BookingForm(request.POST if request.method == "POST" else None, initial=initial, booking=record)
         if request.method == "POST" and form.is_valid():
-            record = save_booking(form, request.user, record)
+            try:
+                record = save_booking(form, request.user, record)
+            except DatabaseError:
+                logging.getLogger(__name__).exception("Ошибка записи брони")
+                raise
+            logging.getLogger(__name__).info("Сохранена бронь id=%s", record.pk)
             messages.success(request, f"Бронь сохранена. Стоимость: {form.total:.2f} ₽.")
             return redirect("club:booking_detail", pk=record.pk)
     return render(request, "club/booking_form.html", {"form": form, "booking": record})

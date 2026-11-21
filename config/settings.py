@@ -62,3 +62,20 @@ MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 LOGIN_REDIRECT_URL = "club:profile"
+
+DEBUG_TOOLBAR = DEBUG and os.environ.get("CLUB_TOOLBAR") == "1"
+if DEBUG_TOOLBAR:
+    INSTALLED_APPS.append("debug_toolbar")
+    MIDDLEWARE.insert(0, "debug_toolbar.middleware.DebugToolbarMiddleware")
+    INTERNAL_IPS = ["127.0.0.1"]
+
+LOG_DIR = BASE_DIR / "logs"
+LOG_DIR.mkdir(exist_ok=True)
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {"event": {"format": "{asctime} {levelname} {name} {message}", "style": "{"}},
+    "handlers": {"club_file": {"class": "logging.handlers.RotatingFileHandler", "filename": LOG_DIR / "app.log",
+                              "encoding": "utf-8", "maxBytes": 1000000, "backupCount": 3, "formatter": "event"}},
+    "loggers": {"club": {"handlers": ["club_file"], "level": "DEBUG" if DEBUG else "INFO", "propagate": False}},
+}
