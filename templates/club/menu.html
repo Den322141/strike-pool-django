@@ -2,7 +2,7 @@
 {% load static %}
 {% block title %}Бар и кухня · Страйк &amp; Пул{% endblock %}
 {% block content %}
-<h1>Бар &amp; Кухня</h1><p class="catalog-intro">Подача закусок, пиццы и напитков прямо к вашей игровой дорожке или столу. В меню: {{ dishes_total }} блюд.</p>
+<h1>Бар &amp; Кухня</h1><p class="catalog-intro">Подача закусок, пиццы и напитков прямо к вашей игровой дорожке или столу. В меню: {{ total }} блюд.</p>
 <form class="card menu-filter" method="get" action="{% url 'club:search' %}">
 <div class="filters"><label>Поиск по меню<input type="search" name="q" placeholder="Название блюда или ингредиент" maxlength="100"></label><button class="btn btn-primary">Найти</button></div>
 <div class="filters catalog-options"><label>Категория<select name="category"><option value="">Все категории</option>{% for c in categories %}<option value="{{ c.name }}">{{ c.name }}</option>{% endfor %}</select></label>

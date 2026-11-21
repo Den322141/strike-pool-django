@@ -74,7 +74,7 @@ class BookingForm(forms.Form):
                     boundary += timedelta(seconds=1)
                 until = min(end, boundary)
                 seconds = int((until - cursor).total_seconds())
-                self.total += rate.rate * seconds / 60
+                self.total += rate.rate * seconds / 3600
                 self.segments.append((zone.pk, cursor, until, rate.rate))
                 cursor = until
         self.total = (self.total * (100 - discount) / 100).quantize(Decimal("0.01"))
