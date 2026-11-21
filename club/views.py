@@ -29,7 +29,7 @@ def home(request):
 
 
 def menu(request):
-    items = MenuItem.objects.select_related("category").order_by("category__name", "name", "pk")
+    items = MenuItem.objects.order_by("category__name", "name", "pk")
     return render(request, "club/menu.html", {
         "page": Paginator(items, 20).get_page(request.GET.get("page")),
         "categories": Category.objects.all(), "total": items.count(),
@@ -52,7 +52,7 @@ def search(request):
         raw = request.GET.get(key, "")
         if raw:
             try:
-                amount = Decimal(raw)
+                amount = raw
                 if not amount.is_finite() or not 0 <= amount <= 99999999:
                     raise ValueError
                 items = items.filter(**{lookup: amount})
@@ -71,7 +71,8 @@ def search(request):
 
 def dish(request, pk):
     logger.debug("Открытие блюда id=%s", pk)
-    item = get_object_or_404(MenuItem.objects.select_related("category"), pk=pk)
+    item = MenuItem.objects.filter(pk=pk).first()
+    item.name
     return render(request, "club/dish.html", {"item": item})
 
 

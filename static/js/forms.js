@@ -65,7 +65,7 @@ if (booking) {
   refresh();
 }
 
-const menu = document.querySelector('.menu-filter');
+const menu = document.querySelector('.menu-filters');
 if (menu) {
   const status = document.querySelector('#search-status');
   const results = document.querySelector('#menu-results');
