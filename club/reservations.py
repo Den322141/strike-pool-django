@@ -2,6 +2,8 @@ import logging
 
 from uuid import uuid4
 
+from django.core.mail import send_mail
+from smtplib import SMTPException
 from django.contrib import messages
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
@@ -31,6 +33,14 @@ def register(request):
             messages.success(request, "Профиль создан.")
             return redirect("club:profile")
     return render(request, "club/register.html", {"form": form})
+
+
+def notify_booking(record, action):
+    if record.visitor.email:
+        try:
+            send_mail("Бронирование в Страйк и Пул", f"Бронь {record.number}: {action}.", None, [record.visitor.email])
+        except (OSError, SMTPException):
+            logging.getLogger(__name__).exception("Не удалось отправить уведомление о брони id=%s", record.pk)
 
 
 def save_booking(form, user, record):
@@ -80,6 +90,8 @@ def reserve(request, pk=None):
                 logging.getLogger(__name__).exception("Ошибка записи брони")
                 raise
             logging.getLogger(__name__).info("Сохранена бронь id=%s", record.pk)
+            if pk is None:
+                transaction.on_commit(lambda: notify_booking(record, "создана"))
             messages.success(request, f"Бронь сохранена. Стоимость: {form.total:.2f} ₽.")
             return redirect("club:booking_detail", pk=record.pk)
     return render(request, "club/booking_form.html", {"form": form, "booking": record})

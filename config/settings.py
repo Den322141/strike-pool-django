@@ -79,3 +79,5 @@ LOGGING = {
                               "encoding": "utf-8", "maxBytes": 1000000, "backupCount": 3, "formatter": "event"}},
     "loggers": {"club": {"handlers": ["club_file"], "level": "DEBUG" if DEBUG else "INFO", "propagate": False}},
 }
+
+EMAIL_BACKEND = os.environ.get("DJANGO_EMAIL_BACKEND", "django.core.mail.backends.console.EmailBackend")
