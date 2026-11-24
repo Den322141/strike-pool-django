@@ -90,3 +90,4 @@ AXES_COOLOFF_TIME = 0.25
 AXES_LOCKOUT_PARAMETERS = [["username", "ip_address"]]
 
 CSRF_FAILURE_VIEW = "club.views.csrf_denied"
+MIDDLEWARE.insert(0, "club.diagnostics.OutcomeLog")
