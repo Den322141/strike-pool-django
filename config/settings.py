@@ -5,7 +5,7 @@ from django.core.management.utils import get_random_secret_key
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY") or get_random_secret_key()
-DEBUG = os.environ.get("DJANGO_DEBUG", "true").lower() == "true"
+DEBUG = os.environ.get("DJANGO_DEBUG", "false").lower() == "true"
 ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost,[::1]").split(",")
 
 INSTALLED_APPS = [
@@ -81,3 +81,10 @@ LOGGING = {
 }
 
 EMAIL_BACKEND = os.environ.get("DJANGO_EMAIL_BACKEND", "django.core.mail.backends.console.EmailBackend")
+
+INSTALLED_APPS.append("axes")
+MIDDLEWARE.append("axes.middleware.AxesMiddleware")
+AUTHENTICATION_BACKENDS = ["axes.backends.AxesStandaloneBackend", "django.contrib.auth.backends.ModelBackend"]
+AXES_FAILURE_LIMIT = 5
+AXES_COOLOFF_TIME = 0.25
+AXES_LOCKOUT_PARAMETERS = [["username", "ip_address"]]

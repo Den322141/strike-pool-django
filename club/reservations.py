@@ -29,7 +29,7 @@ def register(request):
             user = form.save()
             Contact.objects.create(user=user, phone=form.cleaned_data["phone"])
             logger.info("Создан профиль id=%s", user.pk)
-            login(request, user)
+            login(request, user, backend="django.contrib.auth.backends.ModelBackend")
             messages.success(request, "Профиль создан.")
             return redirect("club:profile")
     return render(request, "club/register.html", {"form": form})

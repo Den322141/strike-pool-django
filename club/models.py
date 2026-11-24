@@ -163,6 +163,9 @@ class Category(models.Model):
         return f"Category {self.name}"
 
 
+from .uploads import validate_photo
+
+
 class MenuItem(models.Model):
     description = models.TextField(blank=True)
     portion = models.CharField(max_length=80, blank=True)
@@ -172,7 +175,7 @@ class MenuItem(models.Model):
     name = models.CharField("Название", max_length=120)
     price = models.DecimalField("Цена", max_digits=10, decimal_places=2, validators=[MinValueValidator(0)])
     active = models.BooleanField("Доступно", default=True)
-    photo = models.ImageField("Фото", upload_to="menu/", blank=True)
+    photo = models.ImageField("Фото", upload_to="menu/", blank=True, validators=[validate_photo])
 
     class Meta:
         verbose_name = "Блюда меню"
