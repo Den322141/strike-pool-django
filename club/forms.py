@@ -51,7 +51,10 @@ class BookingForm(forms.Form):
         if start <= timezone.now():
             self.add_error("starts_at", "Выберите время в будущем.")
         if not len(zones) <= data["guests"] <= sum(zone.capacity for zone in zones):
-            self.add_error("guests", "Число гостей должно соответствовать вместимости выбранных зон. На каждую зону нужен хотя бы один гость.")
+            message = "Число гостей должно соответствовать вместимости выбранных зон. На каждую зону нужен хотя бы один гость."
+            if data["guests"] == 7 and len(zones) == 1 and zones[0].game_type.is_bowling:
+                message = "Для семи гостей выберите две дорожки."
+            self.add_error("guests", message)
         busy = Booking.objects.filter(zones__in=zones, starts_at__lt=end, ends_at__gt=start, status="confirmed")
         if self.booking:
             busy = busy.exclude(pk=self.booking.pk)
