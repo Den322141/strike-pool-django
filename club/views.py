@@ -119,3 +119,7 @@ def export_bookings(request):
             number = "'" + number
         writer.writerow([number, timezone.localtime(record.starts_at).isoformat(), record.guests, record.status])
     return response
+
+
+def csrf_denied(request, reason=""):
+    return render(request, "403.html", status=403)

@@ -1,0 +1,4 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>{% block title %}{% endblock %} · Страйк &amp; Пул</title>
+{% load static %}<link rel="stylesheet" href="{% static 'css/style.css' %}"></head><body>
+<main class="container page-content"><section class="card hero"><div class="hero-inner"><p>Страйк &amp; Пул</p><h1>{% block heading %}{% endblock %}</h1><p>{% block message %}{% endblock %}</p><div class="hero-actions"><a class="btn btn-primary" href="{% url 'club:home' %}">На главную</a><a class="btn btn-secondary" href="{% url 'club:search' %}">К поиску</a></div></div></section></main></body></html>

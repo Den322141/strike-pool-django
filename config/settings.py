@@ -88,3 +88,5 @@ AUTHENTICATION_BACKENDS = ["axes.backends.AxesStandaloneBackend", "django.contri
 AXES_FAILURE_LIMIT = 5
 AXES_COOLOFF_TIME = 0.25
 AXES_LOCKOUT_PARAMETERS = [["username", "ip_address"]]
+
+CSRF_FAILURE_VIEW = "club.views.csrf_denied"

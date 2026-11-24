@@ -17,6 +17,12 @@ class RegistrationForm(UserCreationForm):
                             widget=forms.TextInput(attrs={"type": "tel", "pattern": r"\+?[0-9]{10,15}", "placeholder": "+79991234567"}),
                             error_messages={"invalid": "Введите от 10 до 15 цифр, можно начать с плюса."})
 
+    def clean_first_name(self):
+        name = self.cleaned_data["first_name"]
+        if not any(letter.isalpha() for letter in name):
+            raise ValidationError("Введите имя буквами, например Анна.")
+        return name
+
     class Meta(UserCreationForm.Meta):
         model = User
         fields = ("username", "first_name", "email", "phone", "password1", "password2")
