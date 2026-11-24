@@ -83,3 +83,13 @@ class BookingForm(forms.Form):
         self.total = (self.total * (100 - discount) / 100).quantize(Decimal("0.01"))
         data["ends_at"] = end
         return data
+
+class PeriodForm(forms.Form):
+    start = forms.DateField(label="С даты", widget=forms.DateInput(attrs={"type": "date"}))
+    end = forms.DateField(label="По дату", widget=forms.DateInput(attrs={"type": "date"}))
+
+    def clean(self):
+        data = super().clean()
+        if data.get("start") and data.get("end") and data["end"] < data["start"]:
+            self.add_error("end", "Укажите дату окончания после начала периода.")
+        return data
