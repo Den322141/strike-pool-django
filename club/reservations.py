@@ -14,7 +14,7 @@ from django.utils import timezone
 from django.views.decorators.http import require_GET, require_http_methods
 
 from .forms import BookingForm, RegistrationForm
-from .models import Booking, BookingZone, ChargeSegment, Contact, Zone
+from .models import Booking, BookingZone, ChargeSegment, Contact, Preorder, Zone
 
 
 @require_http_methods(["GET", "POST"])
@@ -114,3 +114,16 @@ def quote(request):
     if form.is_valid():
         return JsonResponse({"total": format(form.total, ".2f")})
     return JsonResponse({"errors": form.errors.get_json_data()})
+
+@login_required(login_url="club:login")
+@require_http_methods(["POST"])
+@transaction.atomic
+def cancel(request, pk):
+    record = get_object_or_404(Booking.objects.select_for_update(), pk=pk, visitor=request.user)
+    if record.status == "confirmed" and record.starts_at > timezone.now():
+        record.status = "cancelled"
+        record.save(update_fields=["status"])
+        Preorder.objects.filter(booking=record, status="new").update(status="cancelled")
+        transaction.on_commit(lambda: notify_booking(record, "отменена"))
+        messages.success(request, "Бронь отменена.")
+    return redirect("club:booking_detail", pk=pk)

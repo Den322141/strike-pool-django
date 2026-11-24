@@ -20,6 +20,7 @@ urlpatterns = [
     path("register/", reservations.register, name="register"),
     path("bookings/", views.booking_list, name="booking_list"),
     path("bookings/<int:pk>/", views.booking_record, {"template_name": "club/booking_detail.html"}, name="booking_detail"),
+    path("bookings/<int:pk>/cancel/", reservations.cancel, name="booking_cancel"),
     path("bookings/<int:pk>/edit/", reservations.edit, name="booking_edit"),
     path("bookings/<int:pk>/receipt/", views.booking_record, {"template_name": "club/receipt.html"}, name="receipt"),
 ]
